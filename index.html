@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Block V2.3.1 Cash King</title>
+    <title>Block V2.3.2 Custom Skin</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -33,7 +33,7 @@
             justify-content: flex-start !important;
             padding: 10px 6px !important;
             overflow-x: hidden !important;
-            touch-action: none; /* CHẶN CUỘN TRANG Mobile khi đang kéo thả */
+            touch-action: none;
         }
 
         .super-game-box-v5 {
@@ -65,7 +65,6 @@
             animation: shineTextV5 3s linear infinite !important;
         }
         
-        /* Hiệu ứng Combo Lóe sáng cho LOGO */
         .combo-shine {
             animation: comboLogoShine 0.5s ease-out !important;
         }
@@ -89,15 +88,14 @@
 
         .stat-label { font-size: 8px !important; color: #94a3b8 !important; text-transform: uppercase !important; }
         
-        /* HIỆU ỨNG ĐIỂM SỐ NHẤP NHÁY KHI CÓ COMBO */
         #score.combo-up {
             animation: scorePop 0.3s ease-out;
             color: var(--accent) !important;
         }
         @keyframes scorePop {
-            0% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.1); filter: brightness(1.5); }
-            100% { transform: scale(1); filter: brightness(1); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .stat-val { font-weight: bold !important; font-size: 11px !important; color: var(--gold) !important; }
@@ -131,82 +129,96 @@
         .board-wrapper {
             position: relative !important; width: 100% !important; padding-top: 100% !important;
             background: #0f172a !important; border-radius: 12px !important; border: 3px solid #334155 !important; overflow: hidden !important;
-            box-sizing: border-box !important;
         }
 
         #board {
             position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
             display: grid !important; grid-template-columns: repeat(8, 1fr) !important; grid-template-rows: repeat(8, 1fr) !important; gap: 2px !important; padding: 2px !important;
-            box-sizing: border-box !important;
         }
 
-        .cell { background-color: var(--cell-empty) !important; border-radius: 4px !important; transition: background-color 0.1s ease !important; position: relative !important; }
+        .cell { background-color: var(--cell-empty) !important; border-radius: 4px !important; transition: background-color 0.1s ease !important; position: relative !important; background-size: cover !important; background-position: center !important; }
         .cell.preview-valid { opacity: 0.5 !important; }
-        .cell.preview-invalid { background-color: rgba(239, 68, 68, 0.4) !important; }
+        .cell.preview-invalid { background-color: rgba(239, 68, 68, 0.4) !important; background-image: none !important; }
 
         .cell.clear-flash-v5 {
             background: #ffffff !important;
+            background-image: none !important;
             box-shadow: 0 0 30px #ffffff, inset 0 0 15px #ffffff !important;
             filter: brightness(3) !important;
             transform: scale(1.08) !important;
             z-index: 999 !important;
         }
 
+        /* Skin mặc định khi chưa có ảnh */
         .block-c1 { background: linear-gradient(135deg, #ff2a6d, #9100ff) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
         .block-c2 { background: linear-gradient(135deg, #05d9e8, #01012b) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
         .block-c3 { background: linear-gradient(135deg, #fcee0a, #ff007f) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
         .block-c4 { background: linear-gradient(135deg, #00ff66, #006622) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
         .block-c5 { background: linear-gradient(135deg, #ff9900, #ff3300) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
         .block-c6 { background: linear-gradient(135deg, #2563eb, #1d4ed8) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-obstacle { background: radial-gradient(circle, #64748b 20%, #334155 80%) !important; border: 2px solid #1e293b !important; }
+        .block-obstacle { background: radial-gradient(circle, #64748b 20%, #334155 80%) !important; border: 2px solid #1e293b !important; background-image: none !important; }
+
+        /* Lớp phủ khi dùng ảnh cá nhân làm skin */
+        .has-custom-skin {
+            box-shadow: inset 0 0 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.3) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+        }
 
         @keyframes explode {
             0% { transform: scale(1.08); opacity: 1; filter: brightness(2); }
             100% { transform: scale(0); opacity: 0; }
         }
-        .cell.exploding { animation: explode 0.25s forwards ease-out !important; z-index: 10 !important; }
+        .cell.exploding { animation: explode 0.25s forwards ease-out !important; z-index: 10 !important; background-image: none !important; }
 
         .tray {
             display: flex !important; justify-content: space-between !important; align-items: center !important;
             background: rgba(0,0,0,0.15) !important; padding: 8px !important; border-radius: 12px !important; 
-            height: 96px !important; gap: 8px !important; box-sizing: border-box !important;
+            height: 96px !important; gap: 8px !important;
         }
 
         .tray-slot {
             flex: 1 !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important;
             background: rgba(255,255,255,0.02) !important; border: 2px dashed #475569 !important; border-radius: 8px !important;
-            touch-action: none; position: relative !important; box-sizing: border-box !important;
-            cursor: grab; /* Hiệu ứng con chuột khi có thể kéo */
+            touch-action: none; position: relative !important;
+            cursor: grab;
         }
-        .tray-slot.dragging {
-            cursor: grabbing; /* Hiệu ứng con chuột khi đang kéo */
-        }
+        .tray-slot.dragging { cursor: grabbing; }
 
-        .mini-grid { 
-            display: grid !important; 
-            gap: 2px !important; 
-            justify-content: center !important;
-            align-content: center !important;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-        .mini-cell { 
-            border-radius: 3px !important; 
-            box-sizing: border-box !important;
-        }
-        .mini-cell.empty { background: transparent !important; }
+        .mini-grid { display: grid !important; gap: 2px !important; justify-content: center !important; align-content: center !important; }
+        .mini-cell { border-radius: 3px !important; box-sizing: border-box !important; background-size: cover !important; background-position: center !important; }
+        .mini-cell.empty { background: transparent !important; background-image: none !important; box-shadow: none !important; border: none !important; }
 
-        /* KHỐI HÌNH Bay theo tay KHI ĐANG KÉO */
         .dragging-block-visual {
             position: fixed !important; pointer-events: none !important; display: grid !important; gap: 2px !important; z-index: 9999 !important;
             filter: drop-shadow(0 12px 18px rgba(0,0,0,0.6));
-            transform: scale(1.1); /* Phóng to nhẹ khi kéo để tạo cảm giác "nhấc lên" */
+            transform: scale(1.1);
             transition: transform 0.1s ease;
         }
+        .dragging-block-visual div { background-size: cover !important; background-position: center !important; }
 
-        .controls { display: flex !important; gap: 6px !important; }
-        .btn { flex: 1 !important; padding: 10px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; font-size: 13px !important; cursor: pointer !important; color: white !important; text-align: center !important; }
+        .controls { display: flex !important; gap: 6px !important; flex-wrap: wrap !important; }
+        .btn { flex: 1 !important; padding: 10px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; font-size: 13px !important; cursor: pointer !important; color: white !important; text-align: center !important; min-width: 100px; }
         .btn-reset { background: #ef4444 !important; }
         .btn-reroll { background: #475569 !important; }
+        
+        /* NÚT TẢI ẢNH CUSTOM SKIN */
+        .btn-upload-wrapper {
+            flex: 1 1 100% !important;
+            position: relative;
+            background: linear-gradient(135deg, #a855f7, #6366f1) !important;
+            border-radius: 6px !important;
+            overflow: hidden;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            color: white;
+            padding: 10px !important;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+        }
+        .btn-upload-wrapper input[type="file"] {
+            position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;
+        }
 
         .wallet-section {
             background: #1e293b !important; border: 1px solid #334155 !important; border-radius: 10px !important; padding: 10px !important; display: flex !important; flex-direction: column !important; gap: 6px !important;
@@ -220,24 +232,22 @@
             background: linear-gradient(135deg, #10b981, #059669) !important; color: white !important; font-weight: bold !important;
             padding: 10px !important; border: none !important; border-radius: 6px !important; cursor: pointer !important; font-size: 12px !important; margin-top: 2px !important;
         }
-        .withdraw-note {
-            font-size: 10px !important; color: #f87171 !important; text-align: center !important; margin-top: 2px !important; font-style: italic !important;
-        }
+        .withdraw-note { font-size: 10px !important; color: #f87171 !important; text-align: center !important; margin-top: 2px !important; font-style: italic !important; }
 
         .overlay-modal {
             position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-            background: rgba(15, 23, 42, 0.95) !important; display: flex !important; flex-direction: column !items: center !important; justify-content: center !important;
+            background: rgba(15, 23, 42, 0.95) !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;
             z-index: 100 !important; border-radius: 10px !important; opacity: 0 !important; pointer-events: none !important; transition: opacity 0.3s ease !important; text-align: center !important; padding: 15px !important;
         }
         .overlay-modal.show { opacity: 1 !important; pointer-events: auto !important; }
-        .btn-modal-action { background: #10b981 !important; padding: 8px 20px !important; border: none !important; border-radius: 6px !important; font-weight: bold !color: white !important; cursor: pointer !important; }
+        .btn-modal-action { background: #10b981 !important; padding: 8px 20px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; color: white !important; cursor: pointer !important; }
     </style>
 </head>
 <body>
 
     <div class="super-game-box-v5">
         <header>
-            <div id="game-logo" class="logo-v5">Block V2.3.1</div>
+            <div id="game-logo" class="logo-v5">Block V2.3.2</div>
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-label">Điểm số</div>
@@ -245,7 +255,8 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-label">Streak Phá</div>
-                    <div id="lines-cleared" class="stat-val">x1</div> </div>
+                    <div id="lines-cleared" class="stat-val">x1</div>
+                </div>
                 <div class="stat-box">
                     <div class="stat-label">Ví Tiền Mặt</div>
                     <div id="wallet-balance" class="stat-val cash">0đ</div>
@@ -291,12 +302,15 @@
         <div class="controls">
             <button class="btn btn-reset" onclick="resetGame()">Chơi Lại</button>
             <button class="btn btn-reroll" onclick="rerollTray()">Đổi Khối Hình</button>
+            
+            <div class="btn-upload-wrapper">
+                <span>🖼️ Chọn ảnh làm gạch</span>
+                <input type="file" id="skin-uploader" accept="image/*">
+            </div>
         </div>
 
         <div class="wallet-section">
-            <div class="wallet-title">
-                <span>RÚT TIỀN TỰ ĐỘNG</span>
-            </div>
+            <div class="wallet-title"><span>RÚT TIỀN TỰ ĐỘNG</span></div>
             <div class="input-group">
                 <label>Hệ thống nhận tiền</label>
                 <select id="withdraw-method">
@@ -329,13 +343,15 @@
         let currentLevel = 1; 
         let trayBlocks = [null, null, null];
         
-        // --- HỆ THỐNG ĐIỂM SỐ & COMBO X999 MỚI ---
+        // --- HỆ THỐNG ĐIỂM SỐ & COMBO ---
         const TARGET_LINES = 3; 
-        let streakCount = 1; // Số lượt phá hàng liên tục (Streak)
-        let totalLinesCleared = 0; // Tổng số hàng đã phá trong ván
-
+        let streakCount = 1; 
+        let totalLinesCleared = 0; 
         let cashBalance = parseInt(localStorage.getItem('block_blast_cash_bal')) || 0;
         
+        // --- SKIN ẢNH TỰ CHỌN ---
+        let customSkinUrl = null;
+
         // --- CẤU HÌNH KÉO THẢ VUỐT MƯỢT ---
         let dragInfo = { 
             isDragging: false, 
@@ -343,9 +359,9 @@
             currentX: 0, currentY: 0, 
             targetX: 0, targetY: 0, 
             gridCellSize: 0,
-            offsetX: 0, offsetY: 0 // Điểm neo từ tâm khối đến ngón tay để sửa lỗi 1x1
+            offsetX: 0, offsetY: 0 
         };
-        const SMOOTH_FACTOR = 0.22; // Độ bám tay quán tính (Lerp)
+        const SMOOTH_FACTOR = 0.25; 
         let lastHoveredCell = null;
 
         const SHAPES = [
@@ -373,7 +389,7 @@
 
         function generateLevel(levelNum) {
             boardState = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
-            score = 0; totalLinesCleared = 0; streakCount = 1; // RESET COMBO/STREAK
+            score = 0; totalLinesCleared = 0; streakCount = 1; 
             updateScoreUI();
             document.getElementById('game-over').classList.remove('show');
             document.getElementById('game-win').classList.remove('show');
@@ -393,8 +409,18 @@
             const cells = boardEl.children;
             for (let r = 0; r < BOARD_SIZE; r++) {
                 for (let c = 0; c < BOARD_SIZE; c++) {
-                    const cellEl = cells[r * 8 + c]; cellEl.className = 'cell';
-                    if (boardState[r][c] !== 0) cellEl.classList.add(boardState[r][c]);
+                    const cellEl = cells[r * 8 + c]; 
+                    cellEl.className = 'cell';
+                    cellEl.style.backgroundImage = '';
+
+                    if (boardState[r][c] !== 0) {
+                        cellEl.classList.add(boardState[r][c]);
+                        // Nếu có ảnh custom và ô đó không phải chướng ngại vật vật cản
+                        if (customSkinUrl && boardState[r][c] !== 'block-obstacle') {
+                            cellEl.style.backgroundImage = `url(${customSkinUrl})`;
+                            cellEl.classList.add('has-custom-skin');
+                        }
+                    }
                 }
             }
         }
@@ -428,15 +454,21 @@
                     miniCell.style.width = `${miniCellSize}px`;
                     miniCell.style.height = `${miniCellSize}px`;
                     
-                    if (matrix[r][c] === 1) miniCell.classList.add(block.color);
-                    else miniCell.classList.add('empty');
+                    if (matrix[r][c] === 1) {
+                        miniCell.classList.add(block.color);
+                        if (customSkinUrl) {
+                            miniCell.style.backgroundImage = `url(${customSkinUrl})`;
+                            miniCell.classList.add('has-custom-skin');
+                        }
+                    } else {
+                        miniCell.classList.add('empty');
+                    }
                     miniGrid.appendChild(miniCell);
                 }
             }
             slot.appendChild(miniGrid);
         }
 
-        // --- CÀI ĐẶT SỰ KIỆN KÉO THẢ VUỐT MƯỢT (POINTER EVENTS) ---
         function initDragEvents() {
             for (let i = 0; i < 3; i++) {
                 const slot = document.getElementById(`slot-${i}`);
@@ -446,6 +478,20 @@
             window.addEventListener('pointerup', endDrag);
             window.addEventListener('resize', () => {
                 for(let i=0; i<3; i++) renderTraySlot(i);
+            });
+
+            // XỬ LÝ SỰ KIỆN UP ẢNH KHÁCH HÀNG TỰ CHỌN
+            document.getElementById('skin-uploader').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        customSkinUrl = event.target.result;
+                        renderBoard();
+                        for(let i=0; i<3; i++) renderTraySlot(i);
+                    };
+                    reader.readAsDataURL(file);
+                }
             });
         }
 
@@ -461,23 +507,14 @@
             dragInfo.slotIndex = slotIndex;
             slot.classList.add('dragging');
 
-            // Tính toán vị trí tâm của khối gạch ảo để bay theo tay
             const currentX = rect.left + rect.width / 2;
             const currentY = rect.top + rect.height / 2;
             dragInfo.currentX = currentX;
             dragInfo.currentY = currentY;
 
-            // Đích đến là vị trí ngón tay (nhấc lệch lên trên 50px để tạo khoảng cách)
             dragInfo.targetX = e.clientX; 
             dragInfo.targetY = e.clientY - 60;
 
-            // --- SỬA LỖI 1x1: Tính toán offset để khối bay đúng vị trí ngón tay đè ---
-            const block = trayBlocks[slotIndex];
-            const matrix = block.matrix;
-            // Tâm khối ảo góc trên-trái
-            const dragVisualTopLeftX = currentX - (matrix[0].length * dragInfo.gridCellSize) / 2;
-            const dragVisualTopLeftY = currentY - (matrix.length * dragInfo.gridCellSize) / 2;
-            // Khoảng cách từ ngón tay đến tâm thật của Slot
             dragInfo.offsetX = e.clientX - currentX;
             dragInfo.offsetY = e.clientY - currentY;
 
@@ -497,21 +534,25 @@
                     const miniCell = document.createElement('div');
                     miniCell.style.width = `${dragInfo.gridCellSize}px`; miniCell.style.height = `${dragInfo.gridCellSize}px`;
                     miniCell.classList.add('mini-cell');
-                    if (matrix[r][c] === 1) miniCell.classList.add(block.color);
-                    else miniCell.classList.add('empty');
+                    if (matrix[r][c] === 1) {
+                        miniCell.classList.add(block.color);
+                        if (customSkinUrl) {
+                            miniCell.style.backgroundImage = `url(${customSkinUrl})`;
+                            miniCell.classList.add('has-custom-skin');
+                        }
+                    } else {
+                        miniCell.classList.add('empty');
+                    }
                     visual.appendChild(miniCell);
                 }
             }
             visual.style.display = 'grid'; 
-            // Không gọi Lerp loop trực tiếp ở đây, vòng lặp UpdatePosition sẽ lo
         }
 
         function moveDrag(e) {
             if (!dragInfo.isDragging) return;
-            // Nếu là Touch, cần preventDefault để chặn cuộn trang
             if (e.pointerType === 'touch') e.preventDefault();
             
-            // Cập nhật vị trí mong muốn theo ngón tay di chuyển, trừ đi offset đã tính
             dragInfo.targetX = e.clientX - dragInfo.offsetX; 
             dragInfo.targetY = e.clientY - dragInfo.offsetY - 60;
             checkGridHover();
@@ -519,7 +560,6 @@
 
         function checkGridHover() {
             const visual = document.getElementById('drag-visual'); const rect = visual.getBoundingClientRect();
-            // Lấy điểm dò va chạm ở ô lưới đầu tiên góc trên-trái khối dragging
             const testX = rect.left + dragInfo.gridCellSize/2;
             const testY = rect.top + dragInfo.gridCellSize/2;
 
@@ -544,7 +584,10 @@
                             let cellEl = boardEl.children[tR * 8 + tC];
                             if (cellEl) {
                                 cellEl.classList.add(valid ? 'preview-valid' : 'preview-invalid');
-                                if (valid) cellEl.classList.add(block.color);
+                                if (valid) {
+                                    cellEl.classList.add(block.color);
+                                    if (customSkinUrl) cellEl.style.backgroundImage = `url(${customSkinUrl})`;
+                                }
                             }
                         }
                     }
@@ -560,45 +603,39 @@
             slot.classList.remove('dragging');
 
             if (lastHoveredCell && block && canPlaceBlock(lastHoveredCell.r, lastHoveredCell.c, block.matrix)) {
-                // Đặt khối thành công
                 for (let r = 0; r < block.matrix.length; r++) {
                     for (let c = 0; c < block.matrix[r].length; c++) {
                         if (block.matrix[r][c] === 1) boardState[lastHoveredCell.r + r][lastHoveredCell.c + c] = block.color;
                     }
                 }
                 
-                // --- TÍNH ĐIỂM SỐ CHUẨN BLOCK BLAST ---
                 const totalCellsToPlace = block.matrix.flat().filter(v => v === 1).length;
-                let currentLureScore = Math.floor(totalCellsToPlace * streakCount); // TÍNH ĐIỂM STREAK
-                score += currentLureScore;
+                score += Math.floor(totalCellsToPlace * streakCount);
 
                 trayBlocks[sIdx] = null;
-                slot.style.opacity = '1'; renderTraySlot(sIdx);
+                slot.style.opacity = '1'; 
+                renderTraySlot(sIdx);
                 clearGridPreview(); 
-                checkAndClearLines(); // Ở ĐÂY SẼ XỬ LÝ COMBO X999
-
-                if (trayBlocks.every(b => b === null)) generateNewTray();
-                renderBoard(); updateScoreUI();
                 
-                if (totalLinesCleared >= TARGET_LINES) triggerWinState();
-                else checkGameOverCondition();
+                // Chạy check hàng trước
+                checkAndClearLines(); 
+
+                renderBoard(); 
+                updateScoreUI();
                 
                 cancelDrag(); return;
             }
-            // Thả không thành công -> Bay về chỗ cũ
             slot.style.opacity = '1'; clearGridPreview(); cancelDrag();
         }
 
         function cancelDrag() { dragInfo.isDragging = false; dragInfo.slotIndex = null; lastHoveredCell = null; document.getElementById('drag-visual').style.display = 'none'; }
         
-        // --- VÒNG LẶP NỘI SUY (LERP) LÀM MƯỢT VUỐT ---
         function updateVisualPosition() {
             if (dragInfo.isDragging) {
                 dragInfo.currentX += (dragInfo.targetX - dragInfo.currentX) * SMOOTH_FACTOR; 
                 dragInfo.currentY += (dragInfo.targetY - dragInfo.currentY) * SMOOTH_FACTOR;
                 
                 const visual = document.getElementById('drag-visual'); const rect = visual.getBoundingClientRect();
-                // Đặt vị trí góc trên-trái dựa trên tâm đã Lerp
                 visual.style.left = `${dragInfo.currentX - rect.width / 2}px`; 
                 visual.style.top = `${dragInfo.currentY - rect.height / 2}px`;
             }
@@ -617,7 +654,6 @@
             return true;
         }
 
-        // --- XỬ LÝ GHÉP HÀNG & HỆ THỐNG COMBO X999 CHUẨN ĐÉT ---
         function checkAndClearLines() {
             let rToClear = []; let cToClear = [];
             for (let r = 0; r < 8; r++) { if (boardState[r].every(cell => cell !== 0)) rToClear.push(r); }
@@ -629,16 +665,10 @@
             
             if (numLinesClearedNow > 0) {
                 totalLinesCleared += numLinesClearedNow; 
+                const comboMultiplier = Math.pow(2, numLinesClearedNow - 1); 
+                score += Math.floor((numLinesClearedNow * 8) * comboMultiplier * streakCount);
+                streakCount = Math.min(streakCount + 0.1, 999.0); 
                 
-                // --- THUẬT TOÁN COMBO X999: x1, x2, x4, x8... lũy thừa 2 ---
-                const comboMultiplier = Math.pow(2, numLinesClearedNow - 1); // 1 hàng=x1, 2 hàng=x2, 3 hàng=x4, 4 hàng=x8... x999
-                let comboScore = Math.floor( (numLinesClearedNow * 8) * comboMultiplier * streakCount );
-                score += comboScore;
-                
-                // Tăng Streak cho lượt phá kế tiếp
-                streakCount = Math.min(streakCount + 0.1, 999.0); // Tăng x1.1, x1.2... up đến x999
-                
-                // Hiệu ứng Combo lớn (nếu phá > 1 hàng)
                 if (numLinesClearedNow > 1) {
                     const scoreEl = document.getElementById('score');
                     scoreEl.classList.add('combo-up'); 
@@ -649,41 +679,51 @@
                     setTimeout(() => logoEl.classList.remove('combo-shine'), 500);
                 }
 
-                // Hiệu ứng nhấp nháy phát sáng
                 rToClear.forEach(r => { for (let c = 0; c < 8; c++) boardEl.children[r * 8 + c].classList.add('clear-flash-v5'); });
                 cToClear.forEach(c => { for (let r = 0; r < 8; r++) boardEl.children[r * 8 + c].classList.add('clear-flash-v5'); });
 
-                // Nổ ô biến mất
+                // CHỜ ANIMATION NỔ XONG MỚI KIỂM TRA ĐIỀU KIỆN TIẾP THEO -> CHỐNG LỖI MẤT KHỐI
                 setTimeout(() => {
-                    rToClear.forEach(r => { for (let c = 0; c < 8; c++) { let el = boardEl.children[r * 8 + c]; el.className = 'cell exploding'; boardState[r][c] = 0; } });
-                    cToClear.forEach(c => { for (let r = 0; r < 8; r++) { let el = boardEl.children[r * 8 + c]; el.className = 'cell exploding'; boardState[r][c] = 0; } });
+                    rToClear.forEach(r => { for (let c = 0; c < 8; c++) { boardEl.children[r * 8 + c].className = 'cell exploding'; boardState[r][c] = 0; } });
+                    cToClear.forEach(c => { for (let r = 0; r < 8; r++) { boardEl.children[r * 8 + c].className = 'cell exploding'; boardState[r][c] = 0; } });
                     
-                    setTimeout(() => { renderBoard(); updateScoreUI(); }, 250);
+                    setTimeout(() => { 
+                        renderBoard(); 
+                        updateScoreUI(); 
+                        postTurnExecution();
+                    }, 250);
                 }, 100);
-                
-                return true; // Đã có hàng phá
             } else {
-                // Nếu lượt này không phá được hàng nào -> Reset Streak về x1
                 streakCount = 1;
                 updateScoreUI();
-                return false;
+                postTurnExecution();
             }
         }
 
-        // Cập nhật UI bao gồm COMBO và STREAK
-        function updateScoreUI() { 
-            document.getElementById('score').innerText = score; 
-            document.getElementById('lines-cleared').innerText = `x${streakCount.toFixed(1)}`; // Hiển thị Streak hiện tại
-            document.getElementById(' линий-счетчик').innerText = `${totalLinesCleared} / ${TARGET_LINES}`; // Tùy chọn: Thêm target UI nếu cần
+        // Tách biệt luồng xử lý sau mỗi lượt đi nhằm tránh triệt để lỗi bất đồng bộ mất khối gạch
+        function postTurnExecution() {
+            if (trayBlocks.every(b => b === null)) {
+                generateNewTray();
+            }
+            if (totalLinesCleared >= TARGET_LINES) {
+                triggerWinState();
+            } else {
+                checkGameOverCondition();
+            }
         }
 
-        // --- SỬA LỖI UI MẤT Ô TRÊN CÙNG KHI TRÚNG WIN/LOSE MODAL ---
+        function updateScoreUI() { 
+            document.getElementById('score').innerText = score; 
+            document.getElementById('lines-cleared').innerText = `x${streakCount.toFixed(1)}`; 
+        }
+
         function triggerWinState() {
             let r = Math.floor(Math.random() * 10) + 1; cashBalance += r; localStorage.setItem('block_blast_cash_bal', cashBalance);
             document.getElementById('wallet-balance').innerText = cashBalance + "đ"; document.getElementById('popup-lvl-num').innerText = currentLevel;
             document.getElementById('popup-reward-val').innerText = r; document.getElementById('game-win').classList.add('show');
         }
         function advanceNextLevel() { if (currentLevel < 9999) currentLevel++; document.getElementById('level-select').value = currentLevel; generateLevel(currentLevel); }
+        
         function checkGameOverCondition() {
             let any = false;
             for (let i = 0; i < 3; i++) {
@@ -713,14 +753,12 @@
         document.getElementById('lvl-prev').addEventListener('click', () => { if (currentLevel > 1) { currentLevel--; lvlInput.value = currentLevel; resetGame(); } });
         document.getElementById('lvl-next').addEventListener('click', () => { if (currentLevel < 9999) { currentLevel++; lvlInput.value = currentLevel; resetGame(); } });
 
-        // --- KHỞI CHẠY GAME ---
         createBoardUI(); 
         generateLevel(currentLevel); 
         initDragEvents();
-        updateVisualPosition(); // Chạy Lerp loop liên tục
+        updateVisualPosition();
         
         window.onload = () => {
-            // Chạy Render Tray sau khi DOM hoàn tất để tính size ô lưới chính xác
             for(let i=0; i<3; i++) renderTraySlot(i);
         };
     </script>
