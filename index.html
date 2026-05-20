@@ -29,25 +29,25 @@
             min-height: 100vh;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            padding: 10px; overflow-x: hidden;
+            padding: 8px; overflow-x: hidden;
             touch-action: none; 
         }
 
-        /* TỐI ƯU PHÓNG TO VỪA VẶN KHUNG HÌNH MOBILE */
+        /* KHUNG HÌNH TO FULL MÀN HÌNH ĐIỆN THOẠI */
         .game-container {
-            width: 100%;
-            max-width: 450px; /* Vừa vặn hoàn hảo với mọi dòng điện thoại */
-            height: calc(100vh - 20px); /* Tận dụng tối đa chiều cao màn hình */
-            max-height: 850px;
+            width: 100% !important;
+            max-width: 460px !important; 
+            height: calc(100vh - 16px) !important; 
+            max-height: 880px !important;
             background: var(--panel-bg); 
             border-radius: 20px; 
-            padding: 15px;
+            padding: 14px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px var(--accent-glow);
             display: flex; 
             flex-direction: column; 
-            gap: 12px;
+            gap: 10px;
             position: relative;
-            justify-content: space-between; /* Đẩy các phần tử giãn đều khung hình */
+            justify-content: space-between;
         }
 
         header {
@@ -55,21 +55,22 @@
             border-bottom: 2px solid #475569; padding-bottom: 8px;
         }
 
-        /* ĐỔI TÊN BLOCK V2.3.1 + HIỆU ỨNG QUÉT VIỀN MỖI 3 GIÂY */
-        .logo {
-            font-size: 24px; font-weight: 800;
+        /* CHỮ BLOCK V2.3.1 LƯỚT SÁNG KIM CƯƠNG */
+        .logo-v2 {
+            font-size: 26px !important; 
+            font-weight: 900 !important;
             text-transform: uppercase; letter-spacing: 1px;
             position: relative;
-            background: linear-gradient(90deg, #10b981 0%, #38bdf8 25%, #ffffff 50%, #38bdf8 75%, #10b981 100%);
+            background: linear-gradient(90deg, #10b981 0%, #38bdf8 20%, #ffffff 40%, #38bdf8 60%, #10b981 100%);
             background-size: 200% auto;
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: shineText 3s linear infinite;
+            animation: shineTextV2 3s linear infinite !important;
         }
 
-        @keyframes shineText {
+        @keyframes shineTextV2 {
             0% { background-position: 0% center; }
-            30% { background-position: -200% center; }
-            100% { background-position: -200% center; } /* Nghỉ một chút trước khi lặp lại vòng quét mới */
+            25% { background-position: -200% center; }
+            100% { background-position: -200% center; }
         }
 
         .stats { display: flex; gap: 6px; font-size: 11px; }
@@ -122,14 +123,13 @@
         .cell.preview-valid { opacity: 0.5; }
         .cell.preview-invalid { background-color: rgba(239, 68, 68, 0.4) !important; }
 
-        /* HIỆU ỨNG KHUẾCH ĐẠI KHI GHÉP XONG HÀNG */
-        .cell.clear-flash {
+        /* HIỆU ỨNG CHỚP LÓE SÁNG TRẮNG KHI ĂN HÀNG */
+        .cell.clear-flash-v2 {
             background: #ffffff !important;
-            box-shadow: 0 0 20px #ffffff, inset 0 0 10px #ffffff;
-            filter: brightness(2);
-            transform: scale(1.05);
-            z-index: 5;
-            transition: all 0.1s ease-out;
+            box-shadow: 0 0 25px #ffffff, inset 0 0 12px #ffffff !important;
+            filter: brightness(2.5) !important;
+            transform: scale(1.06) !important;
+            z-index: 99 !important;
         }
 
         .block-c1 { background: linear-gradient(135deg, #ff2a6d, #9100ff); box-shadow: inset 0 0 8px rgba(255,255,255,0.5); }
@@ -212,7 +212,7 @@
 
     <div class="game-container">
         <header>
-            <div class="logo">Block V2.3.1</div>
+            <div class="logo-v2">Block V2.3.1</div>
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-label">Điểm số</div>
@@ -347,7 +347,7 @@
             for (let r = 0; r < BOARD_SIZE; r++) {
                 for (let c = 0; c < BOARD_SIZE; c++) {
                     const cell = document.createElement('div');
-                    cell.classList.add('cell');
+                    cell.className = 'cell';
                     boardEl.appendChild(cell);
                 }
             }
@@ -606,7 +606,7 @@
             return true;
         }
 
-        // --- NÂNG CẤP HIỆU ỨNG PHÁT SÁNG CHỚP LÓE KHI GHÉP XONG HÀNG ---
+        // --- HÀM XỬ LÝ NỔ BLOCK FLASH TRẮNG CHỚP LÓE ---
         function checkAndClearLines() {
             let rowsToClear = []; let colsToClear = [];
             for (let r = 0; r < BOARD_SIZE; r++) { if (boardState[r].every(cell => cell !== 0)) rowsToClear.push(r); }
@@ -618,11 +618,9 @@
             if (totalClears > 0) {
                 linesClearedCount += totalClears; score += (totalClears * BOARD_SIZE) * totalClears;
                 
-                // Bước 1: Kích hoạt hiệu ứng lóe sáng trắng rực rỡ (Flash)
                 rowsToClear.forEach(r => { for (let c = 0; c < BOARD_SIZE; c++) { triggerFlashEffect(r, c); } });
                 colsToClear.forEach(c => { for (let r = 0; r < BOARD_SIZE; r++) { triggerFlashEffect(r, c); } });
 
-                // Bước 2: Đợi hiệu ứng chớp kết thúc rồi kích hoạt vụ nổ xóa ô
                 setTimeout(() => {
                     rowsToClear.forEach(r => { for (let c = 0; c < BOARD_SIZE; c++) { animateExplosion(r, c); boardState[r][c] = 0; } });
                     colsToClear.forEach(c => { for (let r = 0; r < BOARD_SIZE; r++) { animateExplosion(r, c); boardState[r][c] = 0; } });
@@ -635,13 +633,13 @@
         function triggerFlashEffect(r, c) {
             let idx = r * BOARD_SIZE + c; 
             let cellEl = boardEl.children[idx];
-            if (cellEl) { cellEl.classList.add('clear-flash'); }
+            if (cellEl) { cellEl.classList.add('clear-flash-v2'); }
         }
 
         function animateExplosion(r, c) {
             let idx = r * BOARD_SIZE + c; let cellEl = boardEl.children[idx];
             if (cellEl) { 
-                cellEl.classList.remove('clear-flash');
+                cellEl.classList.remove('clear-flash-v2');
                 cellEl.classList.add('exploding'); 
                 setTimeout(() => cellEl.classList.remove('exploding'), 300); 
             }
