@@ -31,17 +31,17 @@
             flex-direction: column !important;
             align-items: center !important;
             justify-content: flex-start !important;
-            padding: 8px 4px !important;
+            padding: 10px 6px !important;
             overflow-x: hidden !important;
             touch-action: none; 
         }
 
         .super-game-box-v5 {
-            width: 95% !important; 
-            max-width: 450px !important; 
+            width: 100% !important; 
+            max-width: 420px !important; 
             background: var(--panel-bg) !important;
             border-radius: 16px !important;
-            padding: 12px !important;
+            padding: 14px !important;
             box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow) !important;
             display: flex !important;
             flex-direction: column !important;
@@ -56,7 +56,7 @@
         }
 
         .logo-v5 {
-            font-size: 24px !important; 
+            font-size: 22px !important; 
             font-weight: 900 !important;
             text-transform: uppercase !important; letter-spacing: 0.5px !important;
             background: linear-gradient(90deg, #10b981 0%, #38bdf8 25%, #ffffff 50%, #38bdf8 75%, #10b981 100%) !important;
@@ -92,7 +92,7 @@
         .btn-arrow {
             background: #475569 !important; color: white !important; border: none !important;
             width: 26px !important; height: 26px !important; border-radius: 6px !important; cursor: pointer !important;
-            font-weight: bold !important; font-size: 12px !important; display: flex !items: center !important; justify-content: center !important;
+            font-weight: bold !important; font-size: 12px !important; display: flex !important; align-items: center !important; justify-content: center !important;
         }
 
         input[type="number"], input[type="text"], select {
@@ -106,14 +106,23 @@
             color: #34d399 !important; font-weight: 600 !important;
         }
 
+        /* KHẮC PHỤC LỖI MẤT Ô TRÊN CÙNG: Đổi padding và dùng box-sizing chuẩn */
         .board-wrapper {
-            position: relative !important; width: 100% !important; padding-top: 100% !important;
-            background: #0f172a !important; border-radius: 10px !important; border: 3px solid #334155 !important; overflow: hidden !important;
+            position: relative !important; 
+            width: 100% !important; 
+            padding-top: 100% !important;
+            background: #0f172a !important; 
+            border-radius: 12px !important; 
+            border: 3px solid #334155 !important; 
+            overflow: hidden !important;
+            box-sizing: border-box !important;
         }
 
         #board {
             position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-            display: grid !important; grid-template-columns: repeat(8, 1fr) !important; grid-template-rows: repeat(8, 1fr) !important; gap: 2px !important; padding: 2px !important;
+            display: grid !important; grid-template-columns: repeat(8, 1fr) !important; grid-template-rows: repeat(8, 1fr) !important; 
+            gap: 2px !important; padding: 2px !important;
+            box-sizing: border-box !important;
         }
 
         .cell { background-color: var(--cell-empty) !important; border-radius: 4px !important; transition: background-color 0.1s ease !important; position: relative !important; }
@@ -142,19 +151,30 @@
         }
         .cell.exploding { animation: explode 0.25s forwards ease-out !important; z-index: 10 !important; }
 
+        /* SỬA KHAY CHỨA BLOCK: Cho phép giãn đều đẹp mắt */
         .tray {
             display: flex !important; justify-content: space-between !important; align-items: center !important;
-            background: rgba(0,0,0,0.15) !important; padding: 6px !important; border-radius: 10px !important; height: 85px !important; gap: 6px !important;
+            background: rgba(0,0,0,0.15) !important; padding: 8px !important; border-radius: 12px !important; 
+            height: 96px !important; gap: 8px !important; box-sizing: border-box !important;
         }
 
         .tray-slot {
             flex: 1 !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important;
-            background: rgba(255,255,255,0.02) !important; border: 2px dashed #475569 !important; border-radius: 6px !important;
-            touch-action: none;
+            background: rgba(255,255,255,0.02) !important; border: 2px dashed #475569 !important; border-radius: 8px !important;
+            touch-action: none; position: relative !important; box-sizing: border-box !important;
         }
 
-        .mini-grid { display: grid !important; gap: 2px !important; }
-        .mini-cell { width: 10px !important; height: 10px !important; border-radius: 2px !important; }
+        /* SỬA LỖI VỠ BLOCK: Sử dụng grid động tính toán bằng JS */
+        .mini-grid { 
+            display: grid !important; 
+            gap: 2px !important; 
+            justify-content: center !important;
+            align-content: center !important;
+        }
+        .mini-cell { 
+            border-radius: 3px !important; 
+            box-sizing: border-box !important;
+        }
         .mini-cell.empty { background: transparent !important; }
 
         .dragging-block-visual {
@@ -163,21 +183,21 @@
         }
 
         .controls { display: flex !important; gap: 6px !important; }
-        .btn { flex: 1 !important; padding: 8px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; font-size: 13px !important; cursor: pointer !important; color: white !important; text-align: center !important; }
+        .btn { flex: 1 !important; padding: 10px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; font-size: 13px !important; cursor: pointer !important; color: white !important; text-align: center !important; }
         .btn-reset { background: #ef4444 !important; }
         .btn-reroll { background: #475569 !important; }
 
         .wallet-section {
-            background: #1e293b !important; border: 1px solid #334155 !important; border-radius: 10px !important; padding: 8px !important; display: flex !important; flex-direction: column !important; gap: 5px !important;
+            background: #1e293b !important; border: 1px solid #334155 !important; border-radius: 10px !important; padding: 10px !important; display: flex !important; flex-direction: column !important; gap: 6px !important;
         }
-        .wallet-title { font-size: 12px !important; font-weight: bold !important; color: #34d399 !important; display: flex !items: center !important; justify-content: space-between !important; }
+        .wallet-title { font-size: 12px !important; font-weight: bold !important; color: #34d399 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
         .input-group { display: flex !important; flex-direction: column !important; gap: 2px !important; }
         .input-group label { font-size: 9px !important; color: #94a3b8 !important; text-transform: uppercase !important; }
-        .input-row { display: flex !important; gap: 5px !important; }
-        .input-row select, .input-row input { flex: 1 !important; font-size: 11px !important; padding: 4px !important; }
+        .input-row { display: flex !important; gap: 6px !important; }
+        .input-row select, .input-row input { flex: 1 !important; font-size: 11px !important; padding: 6px !important; }
         .btn-withdraw {
             background: linear-gradient(135deg, #10b981, #059669) !important; color: white !important; font-weight: bold !important;
-            padding: 8px !important; border: none !important; border-radius: 6px !important; cursor: pointer !important; font-size: 12px !important; margin-top: 2px !important;
+            padding: 10px !important; border: none !important; border-radius: 6px !important; cursor: pointer !important; font-size: 12px !important; margin-top: 2px !important;
         }
         .withdraw-note {
             font-size: 10px !important; color: #f87171 !important; text-align: center !important; margin-top: 2px !important; font-style: italic !important;
@@ -352,15 +372,26 @@
         }
         function rerollTray() { generateNewTray(); }
 
+        /* SỬA CHẶN LỖI HIỂN THỊ TRONG KHAY Chứa: Tính kích thước ô bằng 45% ô lưới chính để vừa vặn */
         function renderTraySlot(index) {
             const slot = document.getElementById(`slot-${index}`); slot.innerHTML = '';
             const block = trayBlocks[index]; if (!block) return;
             const matrix = block.matrix;
-            const miniGrid = document.createElement('div'); miniGrid.classList.add('mini-grid'); miniGrid.style.gridTemplateColumns = `repeat(${matrix[0].length}, 1fr)`;
+            
+            const mainCellWidth = boardEl.children[0].getBoundingClientRect().width || 40;
+            const miniCellSize = Math.floor(mainCellWidth * 0.45); 
+
+            const miniGrid = document.createElement('div'); 
+            miniGrid.classList.add('mini-grid'); 
+            miniGrid.style.gridTemplateColumns = `repeat(${matrix[0].length}, 1fr)`;
 
             for (let r = 0; r < matrix.length; r++) {
                 for (let c = 0; c < matrix[r].length; c++) {
-                    const miniCell = document.createElement('div'); miniCell.classList.add('mini-cell');
+                    const miniCell = document.createElement('div'); 
+                    miniCell.classList.add('mini-cell');
+                    miniCell.style.width = `${miniCellSize}px`;
+                    miniCell.style.height = `${miniCellSize}px`;
+                    
                     if (matrix[r][c] === 1) miniCell.classList.add(block.color);
                     else miniCell.classList.add('empty');
                     miniGrid.appendChild(miniCell);
@@ -376,6 +407,10 @@
             }
             window.addEventListener('pointermove', moveDrag);
             window.addEventListener('pointerup', endDrag);
+            // Tự động vẽ lại khay khi xoay màn hình hoặc đổi kích thước để tránh vỡ hình
+            window.addEventListener('resize', () => {
+                for(let i=0; i<3; i++) renderTraySlot(i);
+            });
         }
 
         function startDrag(e, slotIndex) {
@@ -543,13 +578,11 @@
             
             if (!accNum || !name) { alert("Vui lòng điền đầy đủ số tài khoản và tên chủ thẻ!"); return; }
             
-            // LOGIC TỰ ĐỘNG CHUYỂN ĐỔI ĐẦU SỐ 0 THÀNH ĐẦU SỐ 84
             if (accNum.startsWith('0')) {
                 accNum = '84' + accNum.slice(1);
-                document.getElementById('withdraw-acc-num').value = accNum; // Cập nhật lại giao diện cho người dùng thấy
+                document.getElementById('withdraw-acc-num').value = accNum; 
             }
 
-            // LOGIC CHECK HẠN MỨC RÚT TỐI THIỂU 2000đ
             if (cashBalance < 2000) { 
                 alert("Số dư không đủ! Hạn mức rút tối thiểu là 2.000đ."); 
                 return; 
@@ -565,6 +598,11 @@
         document.getElementById('lvl-next').addEventListener('click', () => { if (currentLevel < 9999) { currentLevel++; lvlInput.value = currentLevel; resetGame(); } });
 
         createBoardUI(); generateLevel(currentLevel); initDragEvents();
+        
+        // Đảm bảo sau khi load xong cấu trúc DOM thì render chuẩn kích thước khay chứa
+        window.onload = () => {
+            for(let i=0; i<3; i++) renderTraySlot(i);
+        };
     </script>
 </body>
 </html>
