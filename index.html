@@ -36,10 +36,9 @@
             touch-action: none; 
         }
 
-        /* ĐỔI TÊN LỚP MỚI HOÀN TOÀN - ÉP TRÌNH DUYỆT KHÔNG ĐƯỢC DÙNG CACHE CŨ */
         .super-game-box-v5 {
-            width: 95% !important; /* Phình to chiếm 95% chiều ngang màn hình điện thoại */
-            max-width: 450px !important; /* Khóa giới hạn vừa vặn, đẹp mắt */
+            width: 95% !important; 
+            max-width: 450px !important; 
             background: var(--panel-bg) !important;
             border-radius: 16px !important;
             padding: 12px !important;
@@ -93,7 +92,7 @@
         .btn-arrow {
             background: #475569 !important; color: white !important; border: none !important;
             width: 26px !important; height: 26px !important; border-radius: 6px !important; cursor: pointer !important;
-            font-weight: bold !important; font-size: 12px !important; display: flex !important; align-items: center !important; justify-content: center !important;
+            font-weight: bold !important; font-size: 12px !important; display: flex !items: center !important; justify-content: center !important;
         }
 
         input[type="number"], input[type="text"], select {
@@ -171,7 +170,7 @@
         .wallet-section {
             background: #1e293b !important; border: 1px solid #334155 !important; border-radius: 10px !important; padding: 8px !important; display: flex !important; flex-direction: column !important; gap: 5px !important;
         }
-        .wallet-title { font-size: 12px !important; font-weight: bold !important; color: #34d399 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
+        .wallet-title { font-size: 12px !important; font-weight: bold !important; color: #34d399 !important; display: flex !items: center !important; justify-content: space-between !important; }
         .input-group { display: flex !important; flex-direction: column !important; gap: 2px !important; }
         .input-group label { font-size: 9px !important; color: #94a3b8 !important; text-transform: uppercase !important; }
         .input-row { display: flex !important; gap: 5px !important; }
@@ -179,6 +178,9 @@
         .btn-withdraw {
             background: linear-gradient(135deg, #10b981, #059669) !important; color: white !important; font-weight: bold !important;
             padding: 8px !important; border: none !important; border-radius: 6px !important; cursor: pointer !important; font-size: 12px !important; margin-top: 2px !important;
+        }
+        .withdraw-note {
+            font-size: 10px !important; color: #f87171 !important; text-align: center !important; margin-top: 2px !important; font-style: italic !important;
         }
 
         .overlay-modal {
@@ -266,7 +268,7 @@
             <div class="input-row">
                 <div class="input-group" style="flex: 1.2;">
                     <label>Số tài khoản / SĐT</label>
-                    <input type="text" id="withdraw-acc-num" placeholder="Số tài khoản...">
+                    <input type="text" id="withdraw-acc-num" placeholder="84xxxx...">
                 </div>
                 <div class="input-group" style="flex: 1;">
                     <label>Tên chủ thẻ (Không dấu)</label>
@@ -274,6 +276,7 @@
                 </div>
             </div>
             <button class="btn-withdraw" onclick="processWithdrawal()">Xác Nhận Rút Tiền</button>
+            <div class="withdraw-note">* Số tiền rút tối thiểu là 2.000đ</div>
         </div>
     </div>
 
@@ -535,10 +538,24 @@
         function resetGame() { generateLevel(currentLevel); }
 
         function processWithdrawal() {
-            const accNum = document.getElementById('withdraw-acc-num').value.trim(); const name = document.getElementById('withdraw-name').value.trim();
+            let accNum = document.getElementById('withdraw-acc-num').value.trim(); 
+            const name = document.getElementById('withdraw-name').value.trim();
+            
             if (!accNum || !name) { alert("Vui lòng điền đầy đủ số tài khoản và tên chủ thẻ!"); return; }
-            if (cashBalance <= 0) { alert("Số dư ví không đủ."); return; }
-            alert(`Lệnh rút thành công! Đang chuyển khoản ${cashBalance}đ về tài khoản của bạn.`);
+            
+            // LOGIC TỰ ĐỘNG CHUYỂN ĐỔI ĐẦU SỐ 0 THÀNH ĐẦU SỐ 84
+            if (accNum.startsWith('0')) {
+                accNum = '84' + accNum.slice(1);
+                document.getElementById('withdraw-acc-num').value = accNum; // Cập nhật lại giao diện cho người dùng thấy
+            }
+
+            // LOGIC CHECK HẠN MỨC RÚT TỐI THIỂU 2000đ
+            if (cashBalance < 2000) { 
+                alert("Số dư không đủ! Hạn mức rút tối thiểu là 2.000đ."); 
+                return; 
+            }
+            
+            alert(`Lệnh rút thành công! Đang chuyển khoản ${cashBalance}đ về tài khoản ${accNum} của bạn.`);
             cashBalance = 0; localStorage.setItem('block_blast_cash_bal', cashBalance); document.getElementById('wallet-balance').innerText = "0đ";
         }
 
