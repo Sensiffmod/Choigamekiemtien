@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +15,18 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
-    <header class="bg-white sticky top-0 z-50 px-4 py-3 flex justify-between items-center border-b border-gray-100">
-        <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center p-1 border border-gray-200">
-                <span class="text-xs font-bold text-blue-600 tracking-tighter">L1P</span>
+    <header class="bg-white sticky top-0 z-50 px-4 py-3 flex justify-between items-center border-b border-gray-100 shadow-xs">
+        <a href="#" class="flex items-center space-x-2 group">
+            <div class="w-9 h-9 bg-gradient-to-tr from-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20 transform group-hover:scale-105 transition duration-200">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
             </div>
-        </div>
-        <button class="text-gray-700 p-2 focus:outline-none">
+            <span class="font-black text-xl tracking-tight text-slate-800 transition group-hover:text-blue-600">
+                Like<span class="text-blue-600">1phut</span><span class="text-gray-400 font-semibold text-xs">.vn</span>
+            </span>
+        </a>
+        <button class="text-gray-700 p-2 focus:outline-none hover:bg-gray-100 rounded-lg transition">
             <i class="fa-solid fa-bars text-2xl"></i>
         </button>
     </header>
@@ -35,7 +40,7 @@
                 Hệ thống Marketplace dịch vụ mạng xã hội [SMM] hàng đầu Châu Á. Chúng tôi cung cấp giải pháp toàn diện giúp bạn bứt phá tương tác, xây dựng uy tín thương hiệu trên mọi nền tảng: Facebook, TikTok, Instagram, YouTube chỉ với vài cú click.
             </p>
             
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition transform active:scale-95">
+            <button onclick="document.getElementById('explore-target').scrollIntoView({ behavior: 'smooth' })" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition transform active:scale-95 block w-max">
                 Khám phá ngay
             </button>
 
@@ -57,7 +62,7 @@
         </div>
     </section>
 
-    <section class="py-8 bg-white text-center border-b border-gray-100">
+    <section id="explore-target" class="py-8 bg-white text-center border-b border-gray-100 scroll-mt-16">
         <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-5">Hỗ trợ đa nền tảng</h4>
         <div class="flex justify-center items-center space-x-4 max-w-md mx-auto px-4">
             <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-50 hover:text-blue-600"><i class="fa-brands fa-facebook-f text-lg"></i></a>
@@ -253,7 +258,7 @@
             <button class="w-full bg-slate-900 hover:bg-black text-white text-xs font-bold py-3.5 rounded-xl transition shadow-sm">
                 Kiếm tiền cùng chúng tôi
             </button>
-            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-3.5 rounded-xl transition shadow-md shadow-blue-600/10">
+            <button onclick="document.getElementById('explore-target').scrollIntoView({ behavior: 'smooth' })" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-3.5 rounded-xl transition shadow-md shadow-blue-600/10">
                 😊 Trải nghiệm ngay
             </button>
         </div>
@@ -262,9 +267,14 @@
     <footer class="bg-white border-t border-gray-100 pt-8 pb-6 px-6">
         <div class="max-w-md mx-auto space-y-6">
             <div class="space-y-3">
-                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center p-1 border border-gray-200">
-                    <span class="text-[10px] font-bold text-blue-600">L1P</span>
-                </div>
+                <a href="#" class="flex items-center space-x-2 w-max">
+                    <div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center shadow-sm">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <span class="font-black text-md tracking-tight text-slate-800">Like<span class="text-blue-600">1phut</span>.vn</span>
+                </a>
                 <p class="text-xs text-gray-500 leading-relaxed">
                     Like1phut.vn - Hệ thống dịch vụ mạng xã hội [SMM] uy tín, chất lượng và tự động hóa hàng đầu. Giải pháp toàn diện giúp bạn bứt phá thương hiệu trên không gian số.
                 </p>
@@ -309,13 +319,9 @@
     <script>
         function toggleFaq(button) {
             const item = button.parentElement;
-            
-            // Đóng tất cả các faq khác nếu muốn đóng mở đơn lẻ (tùy chọn)
             document.querySelectorAll('.faq-item').forEach(el => {
                 if (el !== item) el.classList.remove('active');
             });
-
-            // Bật/tắt class active cho faq được nhấn
             item.classList.toggle('active');
         }
     </script>
