@@ -2,765 +2,204 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Block V2.3.2 Custom Skin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like1phut.vn - Hệ thống dịch vụ mạng xã hội hàng đầu</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --panel-bg: #1e293b;
-            --grid-bg: #334155;
-            --cell-empty: #1e293b;
-            --text-main: #f8fafc;
-            --accent: #10b981; 
-            --accent-glow: rgba(16, 185, 129, 0.4);
-            --gold: #f59e0b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            user-select: none;
-        }
-
-        body {
-            background-color: var(--bg-color) !important;
-            color: var(--text-main) !important;
-            min-height: 100vh !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: flex-start !important;
-            padding: 10px 6px !important;
-            overflow-x: hidden !important;
-            touch-action: none;
-        }
-
-        .super-game-box-v5 {
-            width: 100% !important; 
-            max-width: 420px !important; 
-            background: var(--panel-bg) !important;
-            border-radius: 16px !important;
-            padding: 14px !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 12px !important;
-            position: relative !important;
-            margin: 0 auto !important;
-        }
-
-        header {
-            display: flex !important; justify-content: space-between !important; align-items: center !important;
-            border-bottom: 2px solid #475569 !important; padding-bottom: 8px !important;
-        }
-
-        .logo-v5 {
-            font-size: 22px !important; 
-            font-weight: 900 !important;
-            text-transform: uppercase !important; letter-spacing: 0.5px !important;
-            background: linear-gradient(90deg, #10b981 0%, #38bdf8 25%, #ffffff 50%, #38bdf8 75%, #10b981 100%) !important;
-            background-size: 200% auto !important;
-            -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;
-            animation: shineTextV5 3s linear infinite !important;
-        }
-        
-        .combo-shine {
-            animation: comboLogoShine 0.5s ease-out !important;
-        }
-        @keyframes comboLogoShine {
-            0% { filter: brightness(1) drop-shadow(0 0 0px var(--accent)); }
-            50% { filter: brightness(2) drop-shadow(0 0 20px var(--accent)); }
-            100% { filter: brightness(1) drop-shadow(0 0 0px var(--accent)); }
-        }
-
-        @keyframes shineTextV5 {
-            0% { background-position: 0% center; }
-            30% { background-position: -200% center; }
-            100% { background-position: -200% center; }
-        }
-
-        .stats { display: flex !important; gap: 4px !important; font-size: 11px !important; }
-        .stat-box {
-            background: rgba(0,0,0,0.2) !important; padding: 4px 6px !important;
-            border-radius: 6px !important; border: 1px solid #475569 !important; text-align: center !important; min-width: 62px !important;
-        }
-
-        .stat-label { font-size: 8px !important; color: #94a3b8 !important; text-transform: uppercase !important; }
-        
-        #score.combo-up {
-            animation: scorePop 0.3s ease-out;
-            color: var(--accent) !important;
-        }
-        @keyframes scorePop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .stat-val { font-weight: bold !important; font-size: 11px !important; color: var(--gold) !important; }
-        .stat-val.cash { color: #10b981 !important; }
-
-        .level-control {
-            display: flex !important; align-items: center !important; justify-content: space-between !important;
-            background: rgba(255,255,255,0.05) !important; padding: 6px 10px !important; border-radius: 10px !important; gap: 6px !important;
-        }
-
-        .level-control label { font-size: 12px !important; font-weight: 600 !important; color: #cbd5e1 !important; }
-        .level-input-container { display: flex !important; align-items: center !important; gap: 4px !important; }
-
-        .btn-arrow {
-            background: #475569 !important; color: white !important; border: none !important;
-            width: 26px !important; height: 26px !important; border-radius: 6px !important; cursor: pointer !important;
-            font-weight: bold !important; font-size: 12px !important; display: flex !important; align-items: center !important; justify-content: center !important;
-        }
-
-        input[type="number"], input[type="text"], select {
-            background: #0f172a !important; border: 1px solid #475569 !important; color: #fff !important; padding: 5px !important; border-radius: 6px !important;
-        }
-        input[type="number"] { width: 50px !important; text-align: center !important; font-size: 13px !important; font-weight: bold !important; }
-
-        .target-box {
-            font-size: 11px !important; background: rgba(16, 185, 129, 0.1) !important;
-            border: 1px solid rgba(16, 185, 129, 0.3) !important; padding: 4px 6px !important; border-radius: 6px !important;
-            color: #34d399 !important; font-weight: 600 !important;
-        }
-
-        .board-wrapper {
-            position: relative !important; width: 100% !important; padding-top: 100% !important;
-            background: #0f172a !important; border-radius: 12px !important; border: 3px solid #334155 !important; overflow: hidden !important;
-        }
-
-        #board {
-            position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-            display: grid !important; grid-template-columns: repeat(8, 1fr) !important; grid-template-rows: repeat(8, 1fr) !important; gap: 2px !important; padding: 2px !important;
-        }
-
-        .cell { background-color: var(--cell-empty) !important; border-radius: 4px !important; transition: background-color 0.1s ease !important; position: relative !important; background-size: cover !important; background-position: center !important; }
-        .cell.preview-valid { opacity: 0.5 !important; }
-        .cell.preview-invalid { background-color: rgba(239, 68, 68, 0.4) !important; background-image: none !important; }
-
-        .cell.clear-flash-v5 {
-            background: #ffffff !important;
-            background-image: none !important;
-            box-shadow: 0 0 30px #ffffff, inset 0 0 15px #ffffff !important;
-            filter: brightness(3) !important;
-            transform: scale(1.08) !important;
-            z-index: 999 !important;
-        }
-
-        /* Skin mặc định khi chưa có ảnh */
-        .block-c1 { background: linear-gradient(135deg, #ff2a6d, #9100ff) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-c2 { background: linear-gradient(135deg, #05d9e8, #01012b) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-c3 { background: linear-gradient(135deg, #fcee0a, #ff007f) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-c4 { background: linear-gradient(135deg, #00ff66, #006622) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-c5 { background: linear-gradient(135deg, #ff9900, #ff3300) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-c6 { background: linear-gradient(135deg, #2563eb, #1d4ed8) !important; box-shadow: inset 0 0 6px rgba(255,255,255,0.5) !important; }
-        .block-obstacle { background: radial-gradient(circle, #64748b 20%, #334155 80%) !important; border: 2px solid #1e293b !important; background-image: none !important; }
-
-        /* Lớp phủ khi dùng ảnh cá nhân làm skin */
-        .has-custom-skin {
-            box-shadow: inset 0 0 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.3) !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
-        }
-
-        @keyframes explode {
-            0% { transform: scale(1.08); opacity: 1; filter: brightness(2); }
-            100% { transform: scale(0); opacity: 0; }
-        }
-        .cell.exploding { animation: explode 0.25s forwards ease-out !important; z-index: 10 !important; background-image: none !important; }
-
-        .tray {
-            display: flex !important; justify-content: space-between !important; align-items: center !important;
-            background: rgba(0,0,0,0.15) !important; padding: 8px !important; border-radius: 12px !important; 
-            height: 96px !important; gap: 8px !important;
-        }
-
-        .tray-slot {
-            flex: 1 !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important;
-            background: rgba(255,255,255,0.02) !important; border: 2px dashed #475569 !important; border-radius: 8px !important;
-            touch-action: none; position: relative !important;
-            cursor: grab;
-        }
-        .tray-slot.dragging { cursor: grabbing; }
-
-        .mini-grid { display: grid !important; gap: 2px !important; justify-content: center !important; align-content: center !important; }
-        .mini-cell { border-radius: 3px !important; box-sizing: border-box !important; background-size: cover !important; background-position: center !important; }
-        .mini-cell.empty { background: transparent !important; background-image: none !important; box-shadow: none !important; border: none !important; }
-
-        .dragging-block-visual {
-            position: fixed !important; pointer-events: none !important; display: grid !important; gap: 2px !important; z-index: 9999 !important;
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.6));
-            transform: scale(1.1);
-            transition: transform 0.1s ease;
-        }
-        .dragging-block-visual div { background-size: cover !important; background-position: center !important; }
-
-        .controls { display: flex !important; gap: 6px !important; flex-wrap: wrap !important; }
-        .btn { flex: 1 !important; padding: 10px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; font-size: 13px !important; cursor: pointer !important; color: white !important; text-align: center !important; min-width: 100px; }
-        .btn-reset { background: #ef4444 !important; }
-        .btn-reroll { background: #475569 !important; }
-        
-        /* NÚT TẢI ẢNH CUSTOM SKIN */
-        .btn-upload-wrapper {
-            flex: 1 1 100% !important;
-            position: relative;
-            background: linear-gradient(135deg, #a855f7, #6366f1) !important;
-            border-radius: 6px !important;
-            overflow: hidden;
-            text-align: center;
-            font-weight: bold;
-            font-size: 13px;
-            color: white;
-            padding: 10px !important;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
-        }
-        .btn-upload-wrapper input[type="file"] {
-            position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;
-        }
-
-        .wallet-section {
-            background: #1e293b !important; border: 1px solid #334155 !important; border-radius: 10px !important; padding: 10px !important; display: flex !important; flex-direction: column !important; gap: 6px !important;
-        }
-        .wallet-title { font-size: 12px !important; font-weight: bold !important; color: #34d399 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
-        .input-group { display: flex !important; flex-direction: column !important; gap: 2px !important; }
-        .input-group label { font-size: 9px !important; color: #94a3b8 !important; text-transform: uppercase !important; }
-        .input-row { display: flex !important; gap: 6px !important; }
-        .input-row select, .input-row input { flex: 1 !important; font-size: 11px !important; padding: 6px !important; }
-        .btn-withdraw {
-            background: linear-gradient(135deg, #10b981, #059669) !important; color: white !important; font-weight: bold !important;
-            padding: 10px !important; border: none !important; border-radius: 6px !important; cursor: pointer !important; font-size: 12px !important; margin-top: 2px !important;
-        }
-        .withdraw-note { font-size: 10px !important; color: #f87171 !important; text-align: center !important; margin-top: 2px !important; font-style: italic !important; }
-
-        .overlay-modal {
-            position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-            background: rgba(15, 23, 42, 0.95) !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;
-            z-index: 100 !important; border-radius: 10px !important; opacity: 0 !important; pointer-events: none !important; transition: opacity 0.3s ease !important; text-align: center !important; padding: 15px !important;
-        }
-        .overlay-modal.show { opacity: 1 !important; pointer-events: auto !important; }
-        .btn-modal-action { background: #10b981 !important; padding: 8px 20px !important; border: none !important; border-radius: 6px !important; font-weight: bold !important; color: white !important; cursor: pointer !important; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="super-game-box-v5">
-        <header>
-            <div id="game-logo" class="logo-v5">Block V2.3.2</div>
-            <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-label">Điểm số</div>
-                    <div id="score" class="stat-val">0</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Streak Phá</div>
-                    <div id="lines-cleared" class="stat-val">x1</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Ví Tiền Mặt</div>
-                    <div id="wallet-balance" class="stat-val cash">0đ</div>
-                </div>
-            </div>
-        </header>
+    <header class="bg-white shadow-sm sticky top-0 z-50 px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-lg tracking-wider">L1P</div>
+            <span class="text-xl font-extrabold text-blue-600 tracking-tight">Like1phut<span class="text-amber-500">.vn</span></span>
+        </div>
+        <button id="menuBtn" class="text-gray-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+    </header>
 
-        <div class="level-control">
-            <div>
-                <label for="level-select">Cấp Độ:</label>
-                <div class="level-input-container" style="margin-top: 2px;">
-                    <button class="btn-arrow" id="lvl-prev">&lt;</button>
-                    <input type="number" id="level-select" min="1" max="9999" value="1">
-                    <button class="btn-arrow" id="lvl-next">&gt;</button>
-                </div>
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+        <div class="p-5 border-b flex justify-between items-center bg-gray-50">
+            <span class="font-bold text-blue-600">Like1phut.vn</span>
+            <button id="closeSidebar" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <nav class="p-4 space-y-2">
+            <a href="#" class="flex items-center space-x-3 p-3 bg-blue-50 text-blue-600 rounded-xl font-medium"><i class="fa-solid fa-house w-6"></i> <span>Trang chủ</span></a>
+            <a href="#" class="flex items-center space-x-3 p-3 text-gray-600 hover:bg-gray-50 rounded-xl"><i class="fa-solid fa-wallet w-6"></i> <span>Nạp tiền</span></a>
+            <div class="pt-4 text-xs font-bold text-gray-400 uppercase px-3">Dịch vụ</div>
+            <a href="#" class="flex items-center space-x-3 p-3 text-gray-600 hover:bg-gray-50 rounded-xl"><i class="fa-solid fa-cart-shopping w-6"></i> <span>Đặt hàng</span></a>
+            <a href="#" class="flex items-center space-x-3 p-3 text-gray-600 hover:bg-gray-50 rounded-xl"><i class="fa-solid fa-clock-rotate-left w-6"></i> <span>Lịch sử đơn hàng</span></a>
+            <a href="#" class="flex items-center space-x-3 p-3 text-gray-600 hover:bg-gray-50 rounded-xl"><i class="fa-solid fa-shield-halved w-6"></i> <span>Bảo hành dịch vụ</span></a>
+        </nav>
+    </div>
+    <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-40"></div>
+
+    <section class="bg-amber-100/60 px-6 py-12 text-center md:text-left md:flex md:items-center md:justify-between max-w-6xl mx-auto rounded-3xl my-6">
+        <div class="md:w-1/2 space-y-6">
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">Bứt phá tầm ảnh hưởng cùng <span class="text-blue-600">Like1phut.vn</span></h1>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed">Hệ thống Marketplace dịch vụ mạng xã hội (SMM) hàng đầu Châu Á. Chúng tôi cung cấp giải pháp toàn diện giúp bạn bứt phá tương tác, xây dựng uy tín thương hiệu trên mọi nền tảng: Facebook, TikTok, Instagram, YouTube chỉ với vài cú click.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition transform hover:-translate-y-0.5">Khám phá ngay</button>
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+            <svg class="w-72 h-72 md:w-96 md:h-96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="#3B82F6" opacity="0.1"/>
+                <path d="M40,140 C60,90 140,90 160,140" stroke="#3B82F6" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <circle cx="100" cy="70" r="25" fill="#3B82F6"/>
+                <circle cx="140" cy="60" r="8" fill="#F59E0B"/>
+                <circle cx="60" cy="110" r="12" fill="#F59E0B"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Số dư khả dụng</span>
+                <span class="text-xl font-extrabold text-slate-800 mt-2">7.800đ</span>
+                <span class="text-[10px] bg-blue-50 text-blue-600 self-start px-2 py-0.5 rounded mt-3 font-semibold">Số dư</span>
             </div>
-            <div class="target-box">Mục tiêu: Phá 3 hàng để WIN</div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Tiền nạp tháng này</span>
+                <span class="text-xl font-extrabold text-slate-800 mt-2">10.000đ</span>
+                <span class="text-[10px] bg-emerald-50 text-emerald-600 self-start px-2 py-0.5 rounded mt-3 font-semibold">Tháng này</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Tổng đơn hàng</span>
+                <span class="text-xl font-extrabold text-slate-800 mt-2">2</span>
+                <span class="text-[10px] bg-amber-50 text-amber-600 self-start px-2 py-0.5 rounded mt-3 font-semibold">Đơn hàng</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Sản phẩm đã mua</span>
+                <span class="text-xl font-extrabold text-slate-800 mt-2">0</span>
+                <span class="text-[10px] bg-purple-50 text-purple-600 self-start px-2 py-0.5 rounded mt-3 font-semibold">Sản phẩm</span>
+            </div>
         </div>
 
-        <div class="board-wrapper">
-            <div id="board"></div>
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-sm font-bold text-gray-700 mb-4 flex justify-between items-center">
+                <span>Biểu đồ thống kê</span>
+                <span class="text-xs text-blue-500 font-normal">6 tháng gần nhất</span>
+            </h3>
+            <div class="h-48 w-full flex items-end justify-between pt-4 relative border-b border-l border-gray-100">
+                <div class="w-1/6 flex flex-col items-center group">
+                    <div class="w-full bg-emerald-400 rounded-t-md transition-all duration-500" style="height: 5%"></div>
+                    <span class="text-[10px] text-gray-400 mt-2">T12/2025</span>
+                </div>
+                <div class="w-1/6 flex flex-col items-center">
+                    <div class="w-full bg-emerald-400 rounded-t-md" style="height: 5%"></div>
+                    <span class="text-[10px] text-gray-400 mt-2">T1/2026</span>
+                </div>
+                <div class="w-1/6 flex flex-col items-center">
+                    <div class="w-full bg-emerald-400 rounded-t-md" style="height: 5%"></div>
+                    <span class="text-[10px] text-gray-400 mt-2">T2/2026</span>
+                </div>
+                <div class="w-1/6 flex flex-col items-center">
+                    <div class="w-full bg-emerald-400 rounded-t-md" style="height: 5%"></div>
+                    <span class="text-[10px] text-gray-400 mt-2">T3/2026</span>
+                </div>
+                <div class="w-1/6 flex flex-col items-center relative">
+                    <div class="absolute -top-8 bg-slate-800 text-white text-[9px] px-1.5 py-0.5 rounded shadow whitespace-nowrap z-10">Tiền nạp: 0 <br> Đơn: 0</div>
+                    <div class="w-full bg-emerald-400 rounded-t-md" style="height: 5%"></div>
+                    <span class="text-[10px] text-gray-900 font-bold mt-2">T4/2026</span>
+                </div>
+                <div class="w-1/6 flex flex-col items-center">
+                    <div class="w-full bg-gradient-to-t from-emerald-400 to-blue-500 rounded-t-md" style="height: 90%"></div>
+                    <span class="text-[10px] text-gray-400 mt-2">T5/2026</span>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-4 mt-4 text-xs">
+                <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 bg-emerald-400 rounded-full"></span> <span class="text-gray-500">Tiền nạp</span></div>
+                <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span> <span class="text-gray-500">Số đơn hàng</span></div>
+            </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Đơn hàng gần đây</h3>
+                <a href="#" class="text-xs text-blue-600 hover:underline">Xem tất cả →</a>
+            </div>
             
-            <div id="game-over" class="overlay-modal">
-                <h2 style="color: #ef4444; margin-bottom: 8px;">Thua Cuộc!</h2>
-                <p style="margin-bottom: 15px; font-size:13px;">Không còn vị trí phù hợp cho khối hình.</p>
-                <button class="btn-modal-action" style="background:#ef4444;" onclick="resetGame()">Chơi Lại</button>
-            </div>
-
-            <div id="game-win" class="overlay-modal">
-                <h2 style="color: #10b981; margin-bottom: 8px;">CHIẾN THẮNG!</h2>
-                <p style="font-size:13px;">Hoàn thành Cấp độ <span id="popup-lvl-num">1</span></p>
-                <div style="font-size: 32px; font-weight: 800; color: #f59e0b; margin: 10px 0;">+$<span id="popup-reward-val">0</span>đ</div>
-                <button class="btn-modal-action" onclick="advanceNextLevel()">Nhận & Lên Cấp</button>
-            </div>
-        </div>
-
-        <div class="tray" id="tray">
-            <div class="tray-slot" id="slot-0"></div>
-            <div class="tray-slot" id="slot-1"></div>
-            <div class="tray-slot" id="slot-2"></div>
-        </div>
-
-        <div class="controls">
-            <button class="btn btn-reset" onclick="resetGame()">Chơi Lại</button>
-            <button class="btn btn-reroll" onclick="rerollTray()">Đổi Khối Hình</button>
-            
-            <div class="btn-upload-wrapper">
-                <span>🖼️ Chọn ảnh làm gạch</span>
-                <input type="file" id="skin-uploader" accept="image/*">
-            </div>
-        </div>
-
-        <div class="wallet-section">
-            <div class="wallet-title"><span>RÚT TIỀN TỰ ĐỘNG</span></div>
-            <div class="input-group">
-                <label>Hệ thống nhận tiền</label>
-                <select id="withdraw-method">
-                    <option value="Momo">Ví Điện Tử Momo</option>
-                    <option value="Zalo Pay">Ví Điện Tử Zalo Pay</option>
-                    <option value="MB Bank">Ngân hàng MB Bank</option>
-                </select>
-            </div>
-            <div class="input-row">
-                <div class="input-group" style="flex: 1.2;">
-                    <label>Số tài khoản / SĐT</label>
-                    <input type="text" id="withdraw-acc-num" placeholder="84xxxx...">
+            <div class="space-y-3">
+                <div class="p-3 bg-gray-50 rounded-xl flex justify-between items-center border border-gray-100">
+                    <div>
+                        <div class="text-xs font-mono text-gray-400">#2629571 · <span class="text-gray-500">1 tuần trước</span></div>
+                        <div class="text-sm font-semibold text-slate-700 mt-0.5">Tăng theo dõi Facebook</div>
+                        <div class="text-xs text-blue-600 font-medium mt-1">1.100đ</div>
+                    </div>
+                    <span class="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-lg font-medium">In progress</span>
                 </div>
-                <div class="input-group" style="flex: 1;">
-                    <label>Tên chủ thẻ (Không dấu)</label>
-                    <input type="text" id="withdraw-name" placeholder="NGUYEN VAN A">
+                <div class="p-3 bg-gray-50 rounded-xl flex justify-between items-center border border-gray-100">
+                    <div>
+                        <div class="text-xs font-mono text-gray-400">#8810464 · <span class="text-gray-500">Vừa xong</span></div>
+                        <div class="text-sm font-semibold text-slate-700 mt-0.5">Tăng follow TikTok chất lượng cao</div>
+                        <div class="text-xs text-blue-600 font-medium mt-1">1.100đ</div>
+                    </div>
+                    <span class="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-lg font-medium">In progress</span>
                 </div>
             </div>
-            <button class="btn-withdraw" onclick="processWithdrawal()">Xác Nhận Rút Tiền</button>
-            <div class="withdraw-note">* Số tiền rút tối thiểu là 2.000đ</div>
         </div>
+    </main>
+
+    <footer class="bg-slate-900 text-gray-400 mt-12 pt-10 pb-6 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-800 pb-8">
+            <div class="space-y-4">
+                <span class="text-xl font-black text-white">Like1phut<span class="text-amber-500">.vn</span></span>
+                <p class="text-sm leading-relaxed">Hệ thống dịch vụ mạng xã hội (SMM) uy tín, chất lượng và tự động hóa hàng đầu. Giải pháp toàn diện giúp bạn bứt phá thương hiệu trên không gian số.</p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="text-white font-bold text-base">Dịch vụ chính</h4>
+                <ul class="text-sm space-y-1.5">
+                    <li><a href="#" class="hover:text-white transition">Facebook Services</a></li>
+                    <li><a href="#" class="hover:text-white transition">TikTok Services</a></li>
+                    <li><a href="#" class="hover:text-white transition">Instagram Growth</a></li>
+                    <li><a href="#" class="hover:text-white transition">YouTube Promotion</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-base">Thông tin liên hệ</h4>
+                <div class="text-sm space-y-1">
+                    <p><i class="fa-solid fa-envelope mr-2"></i> halamnguyen227@gmail.com</p>
+                    <p><i class="fa-solid fa-phone mr-2"></i> 0816721661</p>
+                </div>
+                <div class="flex space-x-3 pt-2">
+                    <a href="#" class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-80"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center hover:opacity-80"><i class="fa-solid fa-paper-plane"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-xs text-gray-600 mt-6">© 2026 Like1phut.vn. All rights reserved.</p>
+    </footer>
+
+    <div class="fixed bottom-5 right-5 z-40">
+        <button class="bg-blue-600 text-white p-4 rounded-full shadow-xl hover:bg-blue-700 flex items-center justify-center transition transform hover:scale-110">
+            <i class="fa-solid fa-headset text-xl"></i>
+        </button>
     </div>
 
-    <div id="drag-visual" class="dragging-block-visual" style="display: none;"></div>
-
     <script>
-        const BOARD_SIZE = 8;
-        let boardState = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
-        let score = 0; 
-        let currentLevel = 1; 
-        let trayBlocks = [null, null, null];
-        
-        // --- HỆ THỐNG ĐIỂM SỐ & COMBO ---
-        const TARGET_LINES = 3; 
-        let streakCount = 1; 
-        let totalLinesCleared = 0; 
-        let cashBalance = parseInt(localStorage.getItem('block_blast_cash_bal')) || 0;
-        
-        // --- SKIN ẢNH TỰ CHỌN ---
-        let customSkinUrl = null;
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const closeSidebar = document.getElementById('closeSidebar');
 
-        // --- CẤU HÌNH KÉO THẢ VUỐT MƯỢT ---
-        let dragInfo = { 
-            isDragging: false, 
-            slotIndex: null, 
-            currentX: 0, currentY: 0, 
-            targetX: 0, targetY: 0, 
-            gridCellSize: 0,
-            offsetX: 0, offsetY: 0 
-        };
-        const SMOOTH_FACTOR = 0.25; 
-        let lastHoveredCell = null;
-
-        const SHAPES = [
-            { matrix: [[1]], color: 'block-c1' }, { matrix: [[1, 1]], color: 'block-c1' },
-            { matrix: [[1], [1]], color: 'block-c1' }, { matrix: [[1, 1, 1]], color: 'block-c2' },
-            { matrix: [[1], [1], [1]], color: 'block-c2' }, { matrix: [[1, 1], [1, 1]], color: 'block-c3' },
-            { matrix: [[1, 1, 1], [0, 1, 0]], color: 'block-c4' }, { matrix: [[1, 0], [1, 0], [1, 1]], color: 'block-c5' },
-            { matrix: [[0, 1], [0, 1], [1, 1]], color: 'block-c5' }, { matrix: [[1, 1, 1, 1]], color: 'block-c6' },
-            { matrix: [[1], [1], [1], [1]], color: 'block-c6' }
-        ];
-
-        document.getElementById('wallet-balance').innerText = cashBalance + "đ";
-        const boardEl = document.getElementById('board');
-
-        function createBoardUI() {
-            boardEl.innerHTML = '';
-            for (let r = 0; r < BOARD_SIZE; r++) {
-                for (let c = 0; c < BOARD_SIZE; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'cell';
-                    boardEl.appendChild(cell);
-                }
-            }
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
         }
 
-        function generateLevel(levelNum) {
-            boardState = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
-            score = 0; totalLinesCleared = 0; streakCount = 1; 
-            updateScoreUI();
-            document.getElementById('game-over').classList.remove('show');
-            document.getElementById('game-win').classList.remove('show');
-            cancelDrag();
-
-            let obstacleCount = levelNum > 3 ? (levelNum > 20 ? 4 : 2) : 0;
-            let seed = levelNum * 555.555; let placed = 0;
-            while (placed < obstacleCount) {
-                let x = Math.sin(seed++) * 10000; let randIndex = Math.floor((x - Math.floor(x)) * 64);
-                let r = Math.floor(randIndex / 8); let c = randIndex % 8;
-                if (boardState[r][c] === 0) { boardState[r][c] = 'block-obstacle'; placed++; }
-            }
-            renderBoard(); generateNewTray();
+        function closeMenu() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
         }
 
-        function renderBoard() {
-            const cells = boardEl.children;
-            for (let r = 0; r < BOARD_SIZE; r++) {
-                for (let c = 0; c < BOARD_SIZE; c++) {
-                    const cellEl = cells[r * 8 + c]; 
-                    cellEl.className = 'cell';
-                    cellEl.style.backgroundImage = '';
-
-                    if (boardState[r][c] !== 0) {
-                        cellEl.classList.add(boardState[r][c]);
-                        // Nếu có ảnh custom và ô đó không phải chướng ngại vật vật cản
-                        if (customSkinUrl && boardState[r][c] !== 'block-obstacle') {
-                            cellEl.style.backgroundImage = `url(${customSkinUrl})`;
-                            cellEl.classList.add('has-custom-skin');
-                        }
-                    }
-                }
-            }
-        }
-
-        function generateNewTray() {
-            for (let i = 0; i < 3; i++) {
-                let randIdx = Math.floor(Math.random() * SHAPES.length);
-                trayBlocks[i] = JSON.parse(JSON.stringify(SHAPES[randIdx]));
-                renderTraySlot(i);
-            }
-            checkGameOverCondition();
-        }
-        function rerollTray() { generateNewTray(); }
-
-        function renderTraySlot(index) {
-            const slot = document.getElementById(`slot-${index}`); slot.innerHTML = '';
-            const block = trayBlocks[index]; if (!block) return;
-            const matrix = block.matrix;
-            
-            const mainCellWidth = boardEl.children[0].getBoundingClientRect().width || 40;
-            const miniCellSize = Math.floor(mainCellWidth * 0.45); 
-
-            const miniGrid = document.createElement('div'); 
-            miniGrid.classList.add('mini-grid'); 
-            miniGrid.style.gridTemplateColumns = `repeat(${matrix[0].length}, 1fr)`;
-
-            for (let r = 0; r < matrix.length; r++) {
-                for (let c = 0; c < matrix[r].length; c++) {
-                    const miniCell = document.createElement('div'); 
-                    miniCell.classList.add('mini-cell');
-                    miniCell.style.width = `${miniCellSize}px`;
-                    miniCell.style.height = `${miniCellSize}px`;
-                    
-                    if (matrix[r][c] === 1) {
-                        miniCell.classList.add(block.color);
-                        if (customSkinUrl) {
-                            miniCell.style.backgroundImage = `url(${customSkinUrl})`;
-                            miniCell.classList.add('has-custom-skin');
-                        }
-                    } else {
-                        miniCell.classList.add('empty');
-                    }
-                    miniGrid.appendChild(miniCell);
-                }
-            }
-            slot.appendChild(miniGrid);
-        }
-
-        function initDragEvents() {
-            for (let i = 0; i < 3; i++) {
-                const slot = document.getElementById(`slot-${i}`);
-                slot.addEventListener('pointerdown', (e) => startDrag(e, i));
-            }
-            window.addEventListener('pointermove', moveDrag, { passive: false });
-            window.addEventListener('pointerup', endDrag);
-            window.addEventListener('resize', () => {
-                for(let i=0; i<3; i++) renderTraySlot(i);
-            });
-
-            // XỬ LÝ SỰ KIỆN UP ẢNH KHÁCH HÀNG TỰ CHỌN
-            document.getElementById('skin-uploader').addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        customSkinUrl = event.target.result;
-                        renderBoard();
-                        for(let i=0; i<3; i++) renderTraySlot(i);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-
-        function startDrag(e, slotIndex) {
-            if (!trayBlocks[slotIndex] || dragInfo.isDragging) return;
-            e.preventDefault();
-
-            const slot = document.getElementById(`slot-${slotIndex}`);
-            const rect = slot.getBoundingClientRect();
-            dragInfo.gridCellSize = boardEl.children[0].getBoundingClientRect().width;
-            
-            dragInfo.isDragging = true; 
-            dragInfo.slotIndex = slotIndex;
-            slot.classList.add('dragging');
-
-            const currentX = rect.left + rect.width / 2;
-            const currentY = rect.top + rect.height / 2;
-            dragInfo.currentX = currentX;
-            dragInfo.currentY = currentY;
-
-            dragInfo.targetX = e.clientX; 
-            dragInfo.targetY = e.clientY - 60;
-
-            dragInfo.offsetX = e.clientX - currentX;
-            dragInfo.offsetY = e.clientY - currentY;
-
-            slot.style.opacity = '0';
-            buildDragVisual(trayBlocks[slotIndex]);
-        }
-
-        function buildDragVisual(block) {
-            const visual = document.getElementById('drag-visual'); visual.innerHTML = '';
-            const matrix = block.matrix; const rLen = matrix.length; const cLen = matrix[0].length;
-            visual.style.gridTemplateColumns = `repeat(${cLen}, 1fr)`;
-            visual.style.width = `${cLen * (dragInfo.gridCellSize + 2)}px`;
-            visual.style.height = `${rLen * (dragInfo.gridCellSize + 2)}px`;
-
-            for (let r = 0; r < rLen; r++) {
-                for (let c = 0; c < cLen; c++) {
-                    const miniCell = document.createElement('div');
-                    miniCell.style.width = `${dragInfo.gridCellSize}px`; miniCell.style.height = `${dragInfo.gridCellSize}px`;
-                    miniCell.classList.add('mini-cell');
-                    if (matrix[r][c] === 1) {
-                        miniCell.classList.add(block.color);
-                        if (customSkinUrl) {
-                            miniCell.style.backgroundImage = `url(${customSkinUrl})`;
-                            miniCell.classList.add('has-custom-skin');
-                        }
-                    } else {
-                        miniCell.classList.add('empty');
-                    }
-                    visual.appendChild(miniCell);
-                }
-            }
-            visual.style.display = 'grid'; 
-        }
-
-        function moveDrag(e) {
-            if (!dragInfo.isDragging) return;
-            if (e.pointerType === 'touch') e.preventDefault();
-            
-            dragInfo.targetX = e.clientX - dragInfo.offsetX; 
-            dragInfo.targetY = e.clientY - dragInfo.offsetY - 60;
-            checkGridHover();
-        }
-
-        function checkGridHover() {
-            const visual = document.getElementById('drag-visual'); const rect = visual.getBoundingClientRect();
-            const testX = rect.left + dragInfo.gridCellSize/2;
-            const testY = rect.top + dragInfo.gridCellSize/2;
-
-            const element = document.elementFromPoint(testX, testY);
-            if (element && element.classList.contains('cell')) {
-                const index = Array.from(boardEl.children).indexOf(element);
-                const r = Math.floor(index / 8); const c = index % 8;
-                if (!lastHoveredCell || lastHoveredCell.r !== r || lastHoveredCell.c !== c) {
-                    clearGridPreview(); lastHoveredCell = { r, c }; applyGridPreview(r, c);
-                }
-            } else if (lastHoveredCell) { clearGridPreview(); lastHoveredCell = null; }
-        }
-
-        function applyGridPreview(startR, startC) {
-            const block = trayBlocks[dragInfo.slotIndex]; if (!block) return;
-            const matrix = block.matrix; const valid = canPlaceBlock(startR, startC, matrix);
-            for (let r = 0; r < matrix.length; r++) {
-                for (let c = 0; c < matrix[r].length; c++) {
-                    if (matrix[r][c] === 1) {
-                        let tR = startR + r; let tC = startC + c;
-                        if (tR < 8 && tC < 8) {
-                            let cellEl = boardEl.children[tR * 8 + tC];
-                            if (cellEl) {
-                                cellEl.classList.add(valid ? 'preview-valid' : 'preview-invalid');
-                                if (valid) {
-                                    cellEl.classList.add(block.color);
-                                    if (customSkinUrl) cellEl.style.backgroundImage = `url(${customSkinUrl})`;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        function clearGridPreview() { renderBoard(); }
-
-        function endDrag(e) {
-            if (!dragInfo.isDragging) return;
-            const sIdx = dragInfo.slotIndex; const block = trayBlocks[sIdx];
-            const slot = document.getElementById(`slot-${sIdx}`);
-            slot.classList.remove('dragging');
-
-            if (lastHoveredCell && block && canPlaceBlock(lastHoveredCell.r, lastHoveredCell.c, block.matrix)) {
-                for (let r = 0; r < block.matrix.length; r++) {
-                    for (let c = 0; c < block.matrix[r].length; c++) {
-                        if (block.matrix[r][c] === 1) boardState[lastHoveredCell.r + r][lastHoveredCell.c + c] = block.color;
-                    }
-                }
-                
-                const totalCellsToPlace = block.matrix.flat().filter(v => v === 1).length;
-                score += Math.floor(totalCellsToPlace * streakCount);
-
-                trayBlocks[sIdx] = null;
-                slot.style.opacity = '1'; 
-                renderTraySlot(sIdx);
-                clearGridPreview(); 
-                
-                // Chạy check hàng trước
-                checkAndClearLines(); 
-
-                renderBoard(); 
-                updateScoreUI();
-                
-                cancelDrag(); return;
-            }
-            slot.style.opacity = '1'; clearGridPreview(); cancelDrag();
-        }
-
-        function cancelDrag() { dragInfo.isDragging = false; dragInfo.slotIndex = null; lastHoveredCell = null; document.getElementById('drag-visual').style.display = 'none'; }
-        
-        function updateVisualPosition() {
-            if (dragInfo.isDragging) {
-                dragInfo.currentX += (dragInfo.targetX - dragInfo.currentX) * SMOOTH_FACTOR; 
-                dragInfo.currentY += (dragInfo.targetY - dragInfo.currentY) * SMOOTH_FACTOR;
-                
-                const visual = document.getElementById('drag-visual'); const rect = visual.getBoundingClientRect();
-                visual.style.left = `${dragInfo.currentX - rect.width / 2}px`; 
-                visual.style.top = `${dragInfo.currentY - rect.height / 2}px`;
-            }
-            requestAnimationFrame(updateVisualPosition);
-        }
-
-        function canPlaceBlock(startR, startC, matrix) {
-            for (let r = 0; r < matrix.length; r++) {
-                for (let c = 0; c < matrix[r].length; c++) {
-                    if (matrix[r][c] === 1) {
-                        let tR = startR + r; let tC = startC + c;
-                        if (tR >= 8 || tC >= 8 || boardState[tR][tC] !== 0) return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        function checkAndClearLines() {
-            let rToClear = []; let cToClear = [];
-            for (let r = 0; r < 8; r++) { if (boardState[r].every(cell => cell !== 0)) rToClear.push(r); }
-            for (let c = 0; c < 8; c++) {
-                let full = true; for (let r = 0; r < 8; r++) { if (boardState[r][c] === 0) { full = false; break; } }
-                if (full) cToClear.push(c);
-            }
-            let numLinesClearedNow = rToClear.length + cToClear.length;
-            
-            if (numLinesClearedNow > 0) {
-                totalLinesCleared += numLinesClearedNow; 
-                const comboMultiplier = Math.pow(2, numLinesClearedNow - 1); 
-                score += Math.floor((numLinesClearedNow * 8) * comboMultiplier * streakCount);
-                streakCount = Math.min(streakCount + 0.1, 999.0); 
-                
-                if (numLinesClearedNow > 1) {
-                    const scoreEl = document.getElementById('score');
-                    scoreEl.classList.add('combo-up'); 
-                    setTimeout(() => scoreEl.classList.remove('combo-up'), 300);
-                    
-                    const logoEl = document.getElementById('game-logo');
-                    logoEl.classList.add('combo-shine');
-                    setTimeout(() => logoEl.classList.remove('combo-shine'), 500);
-                }
-
-                rToClear.forEach(r => { for (let c = 0; c < 8; c++) boardEl.children[r * 8 + c].classList.add('clear-flash-v5'); });
-                cToClear.forEach(c => { for (let r = 0; r < 8; r++) boardEl.children[r * 8 + c].classList.add('clear-flash-v5'); });
-
-                // CHỜ ANIMATION NỔ XONG MỚI KIỂM TRA ĐIỀU KIỆN TIẾP THEO -> CHỐNG LỖI MẤT KHỐI
-                setTimeout(() => {
-                    rToClear.forEach(r => { for (let c = 0; c < 8; c++) { boardEl.children[r * 8 + c].className = 'cell exploding'; boardState[r][c] = 0; } });
-                    cToClear.forEach(c => { for (let r = 0; r < 8; r++) { boardEl.children[r * 8 + c].className = 'cell exploding'; boardState[r][c] = 0; } });
-                    
-                    setTimeout(() => { 
-                        renderBoard(); 
-                        updateScoreUI(); 
-                        postTurnExecution();
-                    }, 250);
-                }, 100);
-            } else {
-                streakCount = 1;
-                updateScoreUI();
-                postTurnExecution();
-            }
-        }
-
-        // Tách biệt luồng xử lý sau mỗi lượt đi nhằm tránh triệt để lỗi bất đồng bộ mất khối gạch
-        function postTurnExecution() {
-            if (trayBlocks.every(b => b === null)) {
-                generateNewTray();
-            }
-            if (totalLinesCleared >= TARGET_LINES) {
-                triggerWinState();
-            } else {
-                checkGameOverCondition();
-            }
-        }
-
-        function updateScoreUI() { 
-            document.getElementById('score').innerText = score; 
-            document.getElementById('lines-cleared').innerText = `x${streakCount.toFixed(1)}`; 
-        }
-
-        function triggerWinState() {
-            let r = Math.floor(Math.random() * 10) + 1; cashBalance += r; localStorage.setItem('block_blast_cash_bal', cashBalance);
-            document.getElementById('wallet-balance').innerText = cashBalance + "đ"; document.getElementById('popup-lvl-num').innerText = currentLevel;
-            document.getElementById('popup-reward-val').innerText = r; document.getElementById('game-win').classList.add('show');
-        }
-        function advanceNextLevel() { if (currentLevel < 9999) currentLevel++; document.getElementById('level-select').value = currentLevel; generateLevel(currentLevel); }
-        
-        function checkGameOverCondition() {
-            let any = false;
-            for (let i = 0; i < 3; i++) {
-                if (!trayBlocks[i]) continue;
-                for (let r = 0; r < 8; r++) {
-                    for (let c = 0; c < 8; c++) { if (canPlaceBlock(r, c, trayBlocks[i].matrix)) { any = true; break; } }
-                    if (any) break;
-                }
-                if (any) break;
-            }
-            if (!any && trayBlocks.some(b => b !== null)) document.getElementById('game-over').classList.add('show');
-        }
-        function resetGame() { generateLevel(currentLevel); }
-
-        function processWithdrawal() {
-            let accNum = document.getElementById('withdraw-acc-num').value.trim(); 
-            const name = document.getElementById('withdraw-name').value.trim();
-            if (!accNum || !name) { alert("Vui lòng điền đầy đủ số tài khoản và tên chủ thẻ!"); return; }
-            if (accNum.startsWith('0')) { accNum = '84' + accNum.slice(1); document.getElementById('withdraw-acc-num').value = accNum; }
-            if (cashBalance < 2000) { alert("Số dư không đủ! Hạn mức rút tối thiểu là 2.000đ."); return; }
-            alert(`Lệnh rút thành công! Đang chuyển khoản ${cashBalance}đ về tài khoản ${accNum} của bạn.`);
-            cashBalance = 0; localStorage.setItem('block_blast_cash_bal', cashBalance); document.getElementById('wallet-balance').innerText = "0đ";
-        }
-
-        const lvlInput = document.getElementById('level-select');
-        lvlInput.addEventListener('change', (e) => { currentLevel = parseInt(e.target.value) || 1; resetGame(); });
-        document.getElementById('lvl-prev').addEventListener('click', () => { if (currentLevel > 1) { currentLevel--; lvlInput.value = currentLevel; resetGame(); } });
-        document.getElementById('lvl-next').addEventListener('click', () => { if (currentLevel < 9999) { currentLevel++; lvlInput.value = currentLevel; resetGame(); } });
-
-        createBoardUI(); 
-        generateLevel(currentLevel); 
-        initDragEvents();
-        updateVisualPosition();
-        
-        window.onload = () => {
-            for(let i=0; i<3; i++) renderTraySlot(i);
-        };
+        menuBtn.addEventListener('click', openMenu);
+        closeSidebar.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
     </script>
 </body>
 </html>
