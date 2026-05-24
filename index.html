@@ -3,430 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Like1phut.vn - Bứt phá tầm ảnh hưởng</title>
+    <title>DICHVU1S.VN - Hệ thống SMM Panel Tự Động</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .faq-item.active .faq-answer { max-height: 200px; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        body { font-family: 'Lexend', sans-serif; background-color: #f8fafc; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="max-w-md mx-auto bg-white shadow-xl min-h-screen flex flex-col justify-between">
 
-    <header class="bg-white sticky top-0 z-50 px-4 py-3 flex justify-between items-center border-b border-gray-100 shadow-xs">
-        <button onclick="switchView('landing-view')" class="flex items-center space-x-2 group focus:outline-none">
-            <div class="w-9 h-9 bg-gradient-to-tr from-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20 transform group-hover:scale-105 transition duration-200">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-            </div>
-            <span class="font-black text-xl tracking-tight text-slate-800 transition group-hover:text-blue-600">
-                Like<span class="text-blue-600">1phut</span><span class="text-gray-400 font-semibold text-xs">.vn</span>
-            </span>
-        </button>
-        
-        <div id="header-user-info" class="hidden flex items-center space-x-2">
-            <span id="header-username" class="text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-1.5 rounded-lg">User</span>
-            <button onclick="handleLogout()" class="text-red-500 hover:bg-red-50 p-2 rounded-lg text-sm transition">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </button>
+    <header class="flex justify-between items-center px-4 py-3 border-b bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold text-sm">1S</div>
+            <span class="font-bold text-gray-800 tracking-wider text-sm">DICHVU1S.VN</span>
         </div>
-        <button id="menu-btn" class="text-gray-700 p-2 focus:outline-none hover:bg-gray-100 rounded-lg transition">
-            <i class="fa-solid fa-bars text-2xl"></i>
-        </button>
+        <button class="text-gray-700 text-xl"><i class="fa-solid fa-bars"></i></button>
     </header>
 
+    <section class="px-4 py-8 text-center bg-gradient-to-b from-purple-50 to-transparent">
+        <h1 class="text-2xl font-bold text-gray-800 leading-tight">
+            Tăng trưởng truyền thông xã hội toàn diện với <span class="text-indigo-600">DICHVU1S.VN</span>
+        </h1>
+        <p class="text-gray-600 text-xs mt-3 px-2 leading-relaxed">
+            <strong class="text-gray-800">DICHVU1S.VN</strong> cung cấp giải pháp tương tác Facebook, TikTok, Instagram tự động 24/7. Cam kết giá rẻ nhất thị trường (chấp nhận bù lỗ hỗ trợ anh em), hệ thống nạp tiền tự động nhanh chóng và bảo mật.
+        </p>
+        <button class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-3 px-6 rounded-xl shadow-md transition-all inline-flex items-center gap-2">
+            Bảng điều khiển <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+    </section>
 
-    <div id="landing-view" class="block">
-        <section class="bg-[#FFF9E6] px-6 pt-12 pb-6 text-left relative">
-            <div class="max-w-md mx-auto space-y-6">
-                <h1 class="text-4xl font-extrabold text-slate-900 leading-tight tracking-tight">
-                    Bứt phá tầm <br>ảnh hưởng <br>cùng <span class="text-blue-600">LIKE1PHUT.VN</span>
-                </h1>
-                <p class="text-gray-600 text-[15px] leading-relaxed">
-                    Hệ thống Marketplace dịch vụ mạng xã hội [SMM] hàng đầu Châu Á. Chúng tôi cung cấp giải pháp toàn diện giúp bạn bứt phá tương tác, xây dựng uy tín thương hiệu trên mọi nền tảng chỉ với vài cú click.
-                </p>
-                
-                <button onclick="checkAuthAndRedirect()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition transform active:scale-95 block w-max">
-                    Khám phá ngay
-                </button>
-
-                <div class="pt-6 flex justify-center">
-                    <svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="70" fill="#3B82F6" opacity="0.1"/>
-                        <path d="M50,130 Q100,60 150,130" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" fill="none"/>
-                        <circle cx="100" cy="80" r="20" fill="#F59E0B"/>
-                        <path d="M80,100 L120,100 L100,140 Z" fill="#3B82F6"/>
-                    </svg>
-                </div>
+    <section class="px-4 space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center flex flex-col items-center">
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl mb-3">
+                <i class="fa-brands fa-facebook-f"></i>
             </div>
-        </section>
-
-        <section class="py-8 bg-white text-center border-b border-gray-100">
-            <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-5">Hỗ trợ đa nền tảng</h4>
-            <div class="flex justify-center items-center space-x-4 max-w-md mx-auto px-4">
-                <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-50 hover:text-blue-600"><i class="fa-brands fa-facebook-f text-lg"></i></span>
-                <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-zinc-900 hover:text-white"><i class="fa-brands fa-tiktok text-lg"></i></span>
-                <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-pink-50 hover:text-pink-600"><i class="fa-brands fa-instagram text-lg"></i></span>
-                <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-red-50 hover:text-red-600"><i class="fa-brands fa-youtube text-lg"></i></span>
-            </div>
-        </section>
-
-        <section class="max-w-md mx-auto px-4 py-8 space-y-4">
-            <div class="bg-blue-600 text-white p-6 rounded-2xl shadow-md">
-                <div class="text-3xl mb-3">👋</div>
-                <h3 class="font-extrabold text-xl mb-2">Sứ mệnh của chúng tôi</h3>
-                <p class="text-xs text-blue-100 leading-relaxed">
-                    Like1phut.vn tự hào là đơn vị cung cấp hạ tầng dịch vụ số tự động hóa 100%, kết nối API gốc mang lại mức giá tối ưu nhất.
-                </p>
-            </div>
-        </section>
-
-        <section class="max-w-md mx-auto px-4 py-6">
-            <h2 class="text-2xl font-black text-slate-800 text-center mb-6">Câu hỏi thường gặp</h2>
-            <div class="space-y-2">
-                <div class="faq-item bg-white border border-gray-100 rounded-xl overflow-hidden shadow-xs">
-                    <button onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-xs text-slate-800 flex justify-between items-center focus:outline-none">
-                        <span>Hệ thống nạp tiền tự động không?</span>
-                        <i class="faq-icon fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-answer px-4 pb-4 text-xs text-gray-500 leading-relaxed">
-                        Có, hệ thống tích hợp nạp tiền qua Ngân hàng quét mã QR và ví MoMo xử lý tự động trong 30 giây.
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-
-    <div id="auth-view" class="hidden min-h-[calc(100vh-65px)] flex items-center justify-center px-4 py-8 bg-[#FFF9E6]/30">
-        <div class="bg-white w-full max-w-md p-6 rounded-2xl border border-gray-100 shadow-xl space-y-6">
-            
-            <div class="flex border-b border-gray-100 text-sm font-bold text-center">
-                <button id="tab-login-btn" onclick="toggleAuthTab('login')" class="w-1/2 pb-3 border-b-2 border-blue-600 text-blue-600 focus:outline-none transition">Đăng nhập</button>
-                <button id="tab-register-btn" onclick="toggleAuthTab('register')" class="w-1/2 pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-600 focus:outline-none transition">Đăng ký tài khoản</button>
-            </div>
-
-            <form id="login-form" class="space-y-4" onsubmit="handleLogin(event)">
-                <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Tên tài khoản</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-user text-sm"></i></span>
-                        <input type="text" id="login-username" placeholder="Nhập tài khoản của bạn..." class="w-full text-sm pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Mật khẩu</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-lock text-sm"></i></span>
-                        <input type="password" id="login-password" placeholder="Nhập mật khẩu..." class="w-full text-sm pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition" required>
-                    </div>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md shadow-blue-600/10 transition transform active:scale-95 text-sm">
-                    Đăng nhập hệ thống
-                </button>
-            </form>
-
-            <form id="register-form" class="space-y-4 hidden" onsubmit="handleRegister(event)">
-                <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Tên tài khoản</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-id-card text-sm"></i></span>
-                        <input type="text" id="reg-username" placeholder="Viết liền không dấu..." class="w-full text-sm pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Số điện thoại / Zalo</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-phone text-sm"></i></span>
-                        <input type="text" id="reg-phone" placeholder="Nhập số điện thoại..." class="w-full text-sm pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Mật khẩu</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-lock text-sm"></i></span>
-                        <input type="password" id="reg-password" placeholder="Nhập mật khẩu..." class="w-full text-sm pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition" required>
-                    </div>
-                </div>
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md shadow-emerald-600/10 transition transform active:scale-95 text-sm">
-                    Tạo tài khoản mới
-                </button>
-            </form>
+            <h3 class="font-bold text-gray-800 text-base">Facebook Marketing</h3>
+            <p class="text-gray-500 text-xs mt-1">Tăng Like, Follow, Share và tương tác cho Fanpage hiệu quả.</p>
         </div>
-    </div>
 
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center flex flex-col items-center">
+            <div class="w-12 h-12 bg-zinc-50 text-black rounded-full flex items-center justify-center text-2xl mb-3">
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+            <h3 class="font-bold text-gray-800 text-base">TikTok Services</h3>
+            <p class="text-gray-500 text-xs mt-1">Bứt phá xu hướng với dịch vụ tăng View, Tim, Follow.</p>
+        </div>
+    </section>
 
-    <div id="dashboard-view" class="hidden max-w-md mx-auto px-4 py-6 space-y-6">
+    <section class="px-4 py-10">
+        <div class="text-center mb-6">
+            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider">Hỗ trợ đa nền tảng mạnh mẽ nhất</p>
+            <div class="text-indigo-600 mt-2 text-xl"><i class="fa-solid fa-paper-plane"></i></div>
+            <h2 class="text-xl font-bold text-gray-800 mt-4">Dịch vụ Marketing Mạng xã hội chuyên nghiệp</h2>
+            <p class="text-gray-500 text-xs mt-2 px-4">Chúng tôi giúp thương hiệu của bạn tiếp cận hàng triệu khách hàng tiềm năng thông qua các chiến dịch tương tác thực tế và hiệu quả nhất.</p>
+        </div>
+
+        <div class="space-y-3">
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-50 shadow-xs">
+                <div class="text-purple-600 text-lg mt-1"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                    <h4 class="font-semibold text-gray-800 text-sm">Tốc độ vượt trội</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Đơn hàng được xử lý ngay lập tức. Kết quả bùng nổ chỉ sau vài phút.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-50 shadow-xs">
+                <div class="text-green-600 text-lg mt-1"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <h4 class="font-semibold text-gray-800 text-sm">An toàn tuyệt đối</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Công nghệ bảo mật đa tầng, cam kết bảo vệ tài khoản khách hàng.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-50 shadow-xs">
+                <div class="text-blue-600 text-lg mt-1"><i class="fa-solid fa-headset"></i></div>
+                <div>
+                    <h4 class="font-semibold text-gray-800 text-sm">Hỗ trợ tận tâm</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Đội ngũ kỹ thuật hỗ trợ 24/7, luôn sẵn sàng giải đáp thắc mắc.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-50 shadow-xs">
+                <div class="text-amber-500 text-lg mt-1"><i class="fa-solid fa-tags"></i></div>
+                <div>
+                    <h4 class="font-semibold text-gray-800 text-sm">Giá cả cạnh tranh</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Kết nối trực tiếp API gốc, mang lại mức giá ưu đãi nhất thị trường.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 py-8 bg-gray-50">
+        <h3 class="text-lg font-bold text-gray-800 text-center">Tại sao bạn cần dịch vụ SMM?</h3>
+        <p class="text-gray-500 text-xs text-center mt-2 px-2">Trong thời đại số, sự hiện diện trên mạng xã hội không chỉ là một lựa chọn, mà là yếu tố sống còn cho mọi thương hiệu. Chúng tôi cung cấp giải pháp giúp bạn bứt phá:</p>
         
-        <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-5 rounded-2xl shadow-xl flex justify-between items-center">
-            <div class="space-y-1">
-                <p class="text-xs text-blue-200 font-medium">Xin chào,</p>
-                <h3 id="db-user-display" class="text-lg font-black tracking-wide">Hội viên</h3>
-                <span class="inline-block text-[10px] bg-blue-500/30 text-blue-300 font-bold px-2 py-0.5 rounded-md uppercase border border-blue-500/20">Cấp độ: Đại lý</span>
-            </div>
-            <div class="text-right space-y-1">
-                <p class="text-xs text-blue-200 font-medium">Số dư khả dụng</p>
-                <p class="text-xl font-black text-amber-400">0đ</p>
-                <button class="text-[10px] bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-2.5 py-1 rounded-md transition shadow-xs">
-                    <i class="fa-solid fa-wallet mr-1"></i>Nạp tiền
-                </button>
-            </div>
-        </div>
+        <ul class="mt-4 space-y-2 text-xs text-gray-700 px-2">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500 font-bold"></i> Tăng độ uy tín (Social Proof) cho trang bán hàng.</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500 font-bold"></i> Thu hút khách hàng tiềm năng tự nhiên qua tương tác.</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500 font-bold"></i> Tối ưu hóa thuật toán đề xuất của Facebook, TikTok, YouTube.</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500 font-bold"></i> Tiết kiệm 90% chi phí so với quảng cáo truyền thống.</li>
+        </ul>
 
-        <div class="space-y-2">
-            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider">1. Lựa chọn nền tảng</label>
-            <div class="grid grid-cols-4 gap-2">
-                <button onclick="selectPlatform('facebook')" id="plat-facebook" class="platform-btn bg-blue-500 text-white p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border border-blue-200 transition">
-                    <i class="fa-brands fa-facebook text-xl"></i>
-                    <span class="text-[10px] font-bold">Facebook</span>
-                </button>
-                <button onclick="selectPlatform('tiktok')" id="plat-tiktok" class="platform-btn bg-white text-gray-500 p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border border-gray-100 hover:bg-gray-50 transition">
-                    <i class="fa-brands fa-tiktok text-xl"></i>
-                    <span class="text-[10px] font-bold">TikTok</span>
-                </button>
-                <button onclick="selectPlatform('instagram')" id="plat-instagram" class="platform-btn bg-white text-gray-500 p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border border-gray-100 hover:bg-gray-50 transition">
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                    <span class="text-[10px] font-bold">Instagram</span>
-                </button>
-                <button onclick="selectPlatform('youtube')" id="plat-youtube" class="platform-btn bg-white text-gray-500 p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border border-gray-100 hover:bg-gray-50 transition">
-                    <i class="fa-brands fa-youtube text-xl"></i>
-                    <span class="text-[10px] font-bold">YouTube</span>
-                </button>
+        <div class="grid grid-cols-2 gap-3 mt-6">
+            <div class="bg-white p-4 rounded-xl border border-gray-100 text-center">
+                <span class="block font-bold text-indigo-600 text-lg">10M+</span>
+                <span class="text-gray-500 text-[10px]">Lượt tương tác mỗi ngày</span>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-gray-100 text-center">
+                <span class="block font-bold text-indigo-600 text-lg">05m</span>
+                <span class="text-gray-500 text-[10px]">Thời gian xử lý TB</span>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-gray-100 text-center">
+                <span class="block font-bold text-indigo-600 text-lg">99%</span>
+                <span class="text-gray-500 text-[10px]">Đơn hàng thành công</span>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-gray-100 text-center">
+                <span class="block font-bold text-indigo-600 text-lg">24/7</span>
+                <span class="text-gray-500 text-[10px]">Hỗ trợ kỹ thuật</span>
             </div>
         </div>
+    </section>
 
-        <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-            <h4 class="font-extrabold text-slate-800 text-sm border-b border-gray-50 pb-2 flex items-center">
-                <i class="fa-solid fa-cart-shopping text-blue-600 mr-2"></i> Khởi tạo đơn hàng số dịch vụ
-            </h4>
-
-            <div>
-                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Chọn gói dịch vụ cần chạy</label>
-                <select id="service-select" onchange="updatePrice()" class="w-full text-xs font-medium p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition">
-                    </select>
+    <section class="px-4 py-8 text-center bg-white">
+        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-6">Cam kết chất lượng dịch vụ</h3>
+        <p class="text-gray-500 text-xs px-4 mb-6">Hệ thống của chúng tôi được xây dựng trên nền tảng uy tín và sự hài lòng của khách hàng làm trọng tâm.</p>
+        
+        <div class="space-y-6">
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-dollar-sign"></i></div>
+                <h4 class="font-semibold text-gray-800 text-sm">Hoàn tiền 100%</h4>
+                <p class="text-gray-400 text-[11px] max-w-xs mt-0.5">Chúng tôi cam kết hoàn lại tiền vào số dư tài khoản nếu đơn hàng không được thực hiện thành công do lỗi hệ thống.</p>
             </div>
-
-            <div>
-                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Địa chỉ Link bài viết / ID tài khoản</label>
-                <input type="text" placeholder="Dán link hoặc ID vào đây..." class="w-full text-xs p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition">
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-rotate"></i></div>
+                <h4 class="font-semibold text-gray-800 text-sm">Bảo hành tụt giảm</h4>
+                <p class="text-gray-400 text-[11px] max-w-xs mt-0.5">Các gói dịch vụ có gắn nhãn bảo hành sẽ được hệ thống tự động chạy bù nếu lượng tương tác bị sụt giảm.</p>
             </div>
-
-            <div>
-                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Số lượng cần tăng</label>
-                <input type="number" id="service-quantity" value="1000" min="10" oninput="updatePrice()" class="w-full text-xs p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition">
-                <p class="text-[10px] text-amber-600 font-medium mt-1">* Tối thiểu mua từ 10 tương tác trở lên</p>
-            </div>
-
-            <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-700">Thành tiền ước tính:</span>
-                <span id="total-price-display" class="text-base font-black text-blue-600">0đ</span>
-            </div>
-
-            <button onclick="alert('Tạo đơn hàng thành công! Đang đẩy API lên Server xử lý.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md shadow-blue-600/10 transition transform active:scale-95 text-xs">
-                <i class="fa-solid fa-bolt mr-1"></i> Xác nhận mua ngay
-            </button>
         </div>
-    </div>
+    </section>
 
+    <section class="px-4 py-8 bg-gray-50">
+        <h3 class="text-lg font-bold text-gray-800 text-center mb-2">Quy trình sử dụng</h3>
+        <p class="text-gray-500 text-xs text-center mb-6">Chỉ với 3 bước đơn giản để bắt đầu hành trình bùng nổ tương tác của bạn.</p>
+        
+        <div class="space-y-6 relative pl-4 border-l-2 border-indigo-100 ml-4">
+            <div class="relative">
+                <div class="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white"></div>
+                <h4 class="font-semibold text-gray-800 text-sm">1. Đăng ký tài khoản</h4>
+                <p class="text-gray-500 text-xs mt-0.5">Tạo tài khoản nhanh chóng chỉ trong 30 giây với Email.</p>
+            </div>
+            <div class="relative">
+                <div class="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white"></div>
+                <h4 class="font-semibold text-gray-800 text-sm">2. Nạp tiền hệ thống</h4>
+                <p class="text-gray-500 text-xs mt-0.5">Nạp tiền tự động qua ngân hàng hoặc ví điện tử bất cứ lúc nào.</p>
+            </div>
+            <div class="relative">
+                <div class="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white"></div>
+                <h4 class="font-semibold text-gray-800 text-sm">3. Đặt hàng dịch vụ</h4>
+                <p class="text-gray-500 text-xs mt-0.5">Chọn dịch vụ, nhập link và bấm đặt hàng. Xong!</p>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Danh sách các gói dịch vụ mẫu để hiển thị sống theo nền tảng
-        const serviceData = {
-            facebook: [
-                { id: 'fb-1', name: 'Like Bài Viết (Speed V2) - Giá gốc 8đ', price: 8 },
-                { id: 'fb-2', name: 'Follow Trang Cá Nhân (Bảo hành 30 ngày) - Giá 25đ', price: 25 },
-                { id: 'fb-3', name: 'Mắt Xem Livestream (Duy trì 30 phút) - Giá 35đ', price: 35 }
-            ],
-            tiktok: [
-                { id: 'tt-1', name: 'Follow Người Dùng TikTok (Siêu Tốc) - Giá 32đ', price: 32 },
-                { id: 'tt-2', name: 'Like Video TikTok (Tài khoản thật) - Giá 12đ', price: 12 },
-                { id: 'tt-3', name: 'View Video TikTok (Buff nghìn mắt) - Giá 2đ', price: 2 }
-            ],
-            instagram: [
-                { id: 'ig-1', name: 'Follow Instagram Global (Tài khoản ngoại) - Giá 45đ', price: 45 },
-                { id: 'ig-2', name: 'Like Ảnh Instagram (Giá rẻ) - Giá 15đ', price: 15 }
-            ],
-            youtube: [
-                { id: 'yt-1', name: 'Subscriber YouTube (Thật 100%) - Giá 180đ', price: 180 },
-                { id: 'yt-2', name: 'View Video YouTube (Tính giờ xem tốt) - Giá 60đ', price: 60 }
-            ]
-        };
+    <section class="px-4 py-8 text-center bg-white border-t">
+        <h3 class="text-lg font-bold text-gray-800">Liên hệ với chúng tôi</h3>
+        <p class="text-gray-500 text-xs mt-1">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn mọi lúc.</p>
+        
+        <div class="mt-4 space-y-2 text-xs text-gray-600">
+            <p><strong>EMAIL HỖ TRỢ:</strong> halamnguyen227@gmail.com</p>
+            <p><strong>HOTLINE:</strong> 0816721661</p>
+            <p><strong>GIỜ LÀM VIỆC:</strong> Hỗ trợ tự động 24/7</p>
+        </div>
 
-        let currentSelectedPrice = 0;
+        <button class="mt-6 w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold py-3.5 rounded-xl shadow-lg">
+            <i class="fa-solid fa-user-plus mr-2"></i> Đăng ký ngay
+        </button>
+    </section>
 
-        // Hàm kiểm tra trạng thái đăng nhập khi nhấn "Khám phá ngay" ở trang chủ
-        function checkAuthAndRedirect() {
-            const loggedInUser = localStorage.getItem('smm_logged_in');
-            if (loggedInUser) {
-                initDashboard(loggedInUser);
-                switchView('dashboard-view');
-            } else {
-                switchView('auth-view');
-            }
-        }
+    <footer class="bg-zinc-900 text-gray-400 text-[11px] px-4 py-6 space-y-4">
+        <div>
+            <span class="font-bold text-white text-xs tracking-wider">DICHVU1S.VN</span>
+            <p class="mt-1 text-gray-500">Giải pháp tăng trưởng mạng xã hội hàng đầu. Chúng tôi cung cấp các công cụ và dịch vụ chuyên nghiệp giúp bạn xây dựng và phát triển thương hiệu hiệu quả.</p>
+        </div>
+        <hr class="border-zinc-800">
+        <div class="flex justify-between">
+            <p>&copy; 2026 DICHVU1S.VN</p>
+            <p>Bảo lưu mọi quyền.</p>
+        </div>
+    </footer>
 
-        // 1. LOGIC XỬ LÝ ĐĂNG KÝ
-        function handleRegister(e) {
-            e.preventDefault();
-            const username = document.getElementById('reg-username').value.trim();
-            const phone = document.getElementById('reg-phone').value.trim();
-            const password = document.getElementById('reg-password').value;
-
-            if (username.length < 3) {
-                alert('Tên tài khoản tối thiểu phải từ 3 ký tự trở lên!');
-                return;
-            }
-
-            // Lưu tài khoản vào localStorage làm Database giả lập
-            const userData = { username, phone, password };
-            localStorage.setItem('user_' + username, JSON.stringify(userData));
-
-            alert('Đăng ký tài khoản thành công! Bây giờ bạn có thể đăng nhập.');
-            toggleAuthTab('login');
-            document.getElementById('login-username').value = username;
-        }
-
-        // 2. LOGIC XỬ LÝ ĐĂNG NHẬP (BẮT LỖI CHÍNH XÁC)
-        function handleLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('login-username').value.trim();
-            const password = document.getElementById('login-password').value;
-
-            // Tìm kiếm tài khoản trong bộ nhớ máy
-            const storedUserRaw = localStorage.getItem('user_' + username);
-
-            if (!storedUserRaw) {
-                alert('Tài khoản này không tồn tại trên hệ thống! Hãy qua tab Đăng ký trước.');
-                return;
-            }
-
-            const userData = JSON.parse(storedUserRaw);
-
-            // Kiểm tra mật khẩu có khớp không
-            if (userData.password !== password) {
-                alert('Mật khẩu nhập vào không chính xác! Vui lòng thử lại.');
-                return;
-            }
-
-            // Lưu trạng thái đã đăng nhập thành công
-            localStorage.setItem('smm_logged_in', username);
-            
-            // Chuyển sang giao diện Dashboard mua dịch vụ chính thức
-            initDashboard(username);
-            switchView('dashboard-view');
-        }
-
-        // 3. LOGIC ĐĂNG XUẤT
-        function handleLogout() {
-            localStorage.removeItem('smm_logged_in');
-            document.getElementById('header-user-info').classList.add('hidden');
-            document.getElementById('menu-btn').classList.remove('hidden');
-            switchView('landing-view');
-        }
-
-        // 4. KHỞI TẠO DỮ LIỆU KHI VÀO TRANG MUA DỊCH VỤ
-        function initDashboard(username) {
-            document.getElementById('header-username').innerText = 'User: ' + username;
-            document.getElementById('header-user-info').classList.remove('hidden');
-            document.getElementById('menu-btn').classList.add('hidden'); // Ẩn bớt nút menu không cần thiết
-            document.getElementById('db-user-display').innerText = username;
-            
-            // Mặc định ban đầu kích hoạt nền tảng Facebook trước
-            selectPlatform('facebook');
-        }
-
-        // 5. CHỌN NỀN TẢNG & ĐỔI GÓI
-        function selectPlatform(platform) {
-            // Thay đổi màu sắc active của các nút nền tảng
-            document.querySelectorAll('.platform-btn').forEach(btn => {
-                btn.className = "platform-btn bg-white text-gray-500 p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border border-gray-100 hover:bg-gray-50 transition";
-            });
-
-            const activeColorMap = {
-                facebook: 'bg-blue-500 text-white border-blue-200',
-                tiktok: 'bg-zinc-900 text-white border-zinc-700',
-                instagram: 'bg-pink-600 text-white border-pink-400',
-                youtube: 'bg-red-600 text-white border-red-400'
-            };
-
-            document.getElementById('plat-' + platform).className = `platform-btn p-3 rounded-xl flex flex-col items-center justify-center space-y-1 border transition ${activeColorMap[platform]}`;
-
-            // Nạp dữ liệu các gói tương ứng vào thanh Select Option
-            const selectEl = document.getElementById('service-select');
-            selectEl.innerHTML = '';
-            
-            serviceData[platform].forEach(service => {
-                const opt = document.createElement('option');
-                opt.value = service.price;
-                opt.innerText = service.name;
-                selectEl.appendChild(opt);
-            });
-
-            updatePrice();
-        }
-
-        // 6. TÍNH TIỀN SỐNG TỰ ĐỘNG
-        function updatePrice() {
-            const selectEl = document.getElementById('service-select');
-            if(!selectEl.value) return;
-
-            const unitPrice = parseInt(selectEl.value);
-            const quantityInput = document.getElementById('service-quantity').value;
-            const quantity = parseInt(quantityInput) || 0;
-
-            const totalPrice = unitPrice * quantity;
-            document.getElementById('total-price-display').innerText = totalPrice.toLocaleString('vi-VN') + 'đ';
-        }
-
-        // 7. CHUYỂN ĐỔI GIAO DIỆN (VIEW)
-        function switchView(viewId) {
-            document.getElementById('landing-view').style.display = (viewId === 'landing-view') ? 'block' : 'none';
-            document.getElementById('auth-view').style.display = (viewId === 'auth-view') ? 'block' : 'none';
-            document.getElementById('dashboard-view').style.display = (viewId === 'dashboard-view') ? 'block' : 'none';
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-
-        // CHUYỂN ĐỔI TAB ĐĂNG NHẬP / ĐĂNG KÝ
-        function toggleAuthTab(type) {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            const loginBtn = document.getElementById('tab-login-btn');
-            const registerBtn = document.getElementById('tab-register-btn');
-
-            if (type === 'login') {
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-                loginBtn.className = "w-1/2 pb-3 border-b-2 border-blue-600 text-blue-600 focus:outline-none transition";
-                registerBtn.className = "w-1/2 pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-600 focus:outline-none transition";
-            } else {
-                registerForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-                registerBtn.className = "w-1/2 pb-3 border-b-2 border-blue-600 text-blue-600 focus:outline-none transition";
-                loginBtn.className = "w-1/2 pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-600 focus:outline-none transition";
-            }
-        }
-
-        // ĐÓNG MỞ FAQ
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            document.querySelectorAll('.faq-item').forEach(el => {
-                if (el !== item) el.classList.remove('active');
-            });
-            item.classList.toggle('active');
-        }
-
-        // Tự động kiểm tra nếu phiên làm việc cũ vẫn còn trên trình duyệt thì giữ trạng thái Đăng nhập luôn
-        window.onload = function() {
-            const loggedInUser = localStorage.getItem('smm_logged_in');
-            if (loggedInUser) {
-                initDashboard(loggedInUser);
-                switchView('dashboard-view');
-            }
-        }
-    </script>
 </body>
 </html>
  
