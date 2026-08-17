@@ -3,328 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DICHVU1S.VN - Hệ thống SMM Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>C++ Terminal Job System</title>
     <style>
-        body { font-family: 'Lexend', sans-serif; background-color: #f8fafc; }
-        .page-section { display: none; }
-        .page-section.active { display: flex; }
+        /* GIAO DIỆN PHONG CÁCH CONSOLE / C++ */
+        body {
+            background-color: #000000;
+            color: #00FF00; /* Chữ xanh lá kiểu terminal */
+            font-family: 'Consolas', 'Courier New', monospace;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .console-window {
+            border: 2px solid #00FF00;
+            width: 100%;
+            max-width: 650px;
+            padding: 20px;
+            box-shadow: 0 0 15px #00FF00;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px dashed #00FF00;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+        input {
+            background-color: #000000;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            padding: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            width: calc(100% - 135px);
+            outline: none;
+        }
+        input:focus {
+            background-color: #002200;
+        }
+        /* Nút con mắt xem mật khẩu */
+        .eye-icon {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            cursor: pointer;
+            user-select: none;
+            color: #00FF00;
+        }
+        .eye-icon:hover {
+            color: #FFFFFF;
+        }
+        .actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        button {
+            background-color: #00FF00;
+            color: #000000;
+            border: none;
+            padding: 8px 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        a {
+            color: #00FF00;
+            text-decoration: underline;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        a:hover {
+            color: #FFFFFF;
+        }
+        /* Màn hình giấu đi ban đầu */
+        #dashboard {
+            display: none;
+        }
+        .job-section {
+            border: 1px dashed #00FF00;
+            padding: 10px;
+            margin-top: 15px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .sys-msg {
+            color: #FFFF00; /* Màu vàng cho thông báo hệ thống */
+            margin-bottom: 15px;
+        }
     </style>
 </head>
-<body class="max-w-md mx-auto bg-white shadow-xl min-h-screen flex flex-col relative pb-16">
+<body>
 
-    <header class="flex justify-between items-center px-4 py-3 border-b bg-white sticky top-0 z-50">
-        <div class="flex items-center gap-2 cursor-pointer" onclick="switchPage('landing')">
-            <div class="w-8 h-8 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold text-sm">1S</div>
-            <span class="font-bold text-gray-800 tracking-wider text-sm">DICHVU1S.VN</span>
-        </div>
-        <div class="flex items-center gap-3">
-            <button onclick="switchPage('deposit')" class="text-gray-500 text-sm bg-gray-50 px-2 py-1 rounded border border-gray-100 flex items-center gap-1">
-                <i class="fa-solid fa-wallet text-xs text-indigo-500"></i> <span class="font-semibold text-gray-700">0đ</span>
-            </button>
-            <button class="text-gray-700 text-xl"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
-
-    <div id="landing-page" class="page-section active flex-1 flex-col justify-between">
-        <main>
-            <section class="px-4 py-8 text-center bg-gradient-to-b from-purple-50 to-transparent">
-                <h1 class="text-2xl font-bold text-gray-800 leading-tight">
-                    Tăng trưởng truyền thông xã hội với <span class="text-indigo-600">DICHVU1S.VN</span>
-                </h1>
-                <p class="text-gray-600 text-xs mt-3 px-2 leading-relaxed">
-                    Hệ thống cung cấp dịch vụ Facebook, TikTok, Instagram tự động 24/7. Cam kết giá rẻ, an toàn và nhanh chóng.
-                </p>
-                <button onclick="switchPage('dashboard')" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-3 px-6 rounded-xl shadow-md transition-all inline-flex items-center gap-2">
-                    Đặt Đơn Ngay <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </section>
-
-            <section class="px-4 py-8 bg-white border-t border-gray-50">
-                <h3 class="text-lg font-bold text-gray-800 text-center mb-6">Quy trình sử dụng</h3>
-                <div class="space-y-4 flex flex-col items-center text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-wallet"></i></div>
-                        <h4 class="font-semibold text-gray-800 text-sm">1. Nạp tiền</h4>
-                        <p class="text-gray-500 text-[11px] mt-1">Nạp tự động qua Bank/Momo.</p>
-                    </div>
-                    <div class="w-0.5 h-6 bg-gray-200"></div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <h4 class="font-semibold text-gray-800 text-sm">2. Đặt hàng</h4>
-                        <p class="text-gray-500 text-[11px] mt-1">Chọn dịch vụ và nhập link.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="px-4 py-8 text-center bg-gray-50 border-t">
-                <h3 class="text-lg font-bold text-gray-800">Liên hệ hỗ trợ</h3>
-                <div class="space-y-2 text-xs text-gray-600 mt-4 mb-4">
-                    <p><strong>EMAIL:</strong> dichvu1giay@gmail.com</p>
-                    <p><strong>HOTLINE:</strong> 0397208110</p>
-                </div>
-                <div class="flex justify-center gap-3">
-                    <button class="w-8 h-8 bg-blue-600 text-white rounded-md text-sm"><i class="fa-brands fa-facebook-f"></i></button>
-                    <button class="w-16 h-8 bg-blue-500 text-white font-bold rounded-md text-xs">Zalo</button>
-                </div>
-            </section>
-        </main>
-        <footer class="bg-zinc-900 text-gray-400 text-[11px] px-4 py-6 text-center">
-            <p>&copy; 2026 DICHVU1S.VN - All rights reserved.</p>
-        </footer>
+<div class="console-window">
+    <div class="header">
+        =======================================<br>
+        * HỆ THỐNG AUTO JOB TIKTOK / FACEBOOK *<br>
+        * Bản quyền: C++ Terminal Style       *<br>
+        =======================================
     </div>
 
-    <div id="dashboard-page" class="page-section flex-1 flex-col p-4 bg-[#f8fafc]">
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 space-y-4">
-            <div class="flex justify-between items-center pb-2 border-b border-gray-50">
-                <div class="flex items-center gap-2 text-gray-800 font-bold text-sm">
-                    <i class="fa-solid fa-cart-shopping text-indigo-500"></i> Đặt Hàng Mới
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 text-xs font-semibold mb-1.5">Nền Tảng <span class="text-red-500">*</span></label>
-                <div class="relative">
-                    <select id="platform-select" onchange="updateCategories()" class="w-full bg-gray-50 border border-gray-200 text-xs font-medium rounded-xl pl-10 pr-3 py-2.5 text-gray-800 focus:outline-none focus:border-indigo-500 appearance-none">
-                        <option value="fb">Facebook</option>
-                        <option value="tt" selected>TikTok</option>
-                        <option value="ig">Instagram</option>
-                        <option value="yt">YouTube</option>
-                    </select>
-                    <div class="absolute left-3.5 top-3 text-zinc-900 text-sm" id="platform-icon"><i class="fa-brands fa-tiktok"></i></div>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 text-xs font-semibold mb-1.5">Phân Loại <span class="text-red-500">*</span></label>
-                <select id="category-select" onchange="updateServices()" class="w-full bg-gray-50 border border-gray-200 text-xs rounded-xl px-3 py-2.5 text-gray-800 focus:outline-none focus:border-indigo-500"></select>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 text-xs font-semibold mb-1.5">Dịch Vụ (Server) <span class="text-red-500">*</span></label>
-                <select id="service-select" onchange="updateServiceDetails()" class="w-full bg-gray-50 border border-gray-200 text-xs rounded-xl px-3 py-2.5 text-gray-800 focus:outline-none focus:border-indigo-500 font-medium"></select>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2 text-[10px]">
-                <div class="bg-emerald-50 border border-emerald-100 text-emerald-700 px-2 py-1.5 rounded-lg flex items-center gap-1">
-                    <i class="fa-solid fa-circle-check"></i> Trạng thái: <span class="font-bold">Hoạt động</span>
-                </div>
-                <div class="bg-blue-50 border border-blue-100 text-blue-700 px-2 py-1.5 rounded-lg flex items-center gap-1">
-                    <i class="fa-solid fa-arrow-down-up-lock"></i> Min/Max: <span id="lbl-minmax" class="font-bold">100 / 10M</span>
-                </div>
-                <div class="bg-purple-50 border border-purple-100 text-purple-700 px-2 py-1.5 rounded-lg flex items-center gap-1">
-                    <i class="fa-solid fa-dollar-sign"></i> Giá: <span id="lbl-price" class="font-bold">400đ</span>
-                </div>
-                <div class="bg-rose-50 border border-rose-100 text-rose-700 px-2 py-1.5 rounded-lg flex items-center gap-1">
-                    <i class="fa-solid fa-shield-halved"></i> Bảo hành: <span id="lbl-warranty" class="font-bold">Có</span>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 text-xs font-semibold mb-1.5">Link / UID <span class="text-red-500">*</span></label>
-                <input type="text" placeholder="Nhập link cần tăng..." class="w-full bg-gray-50 border border-gray-200 text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:border-indigo-500">
-            </div>
-            <div>
-                <label class="block text-gray-700 text-xs font-semibold mb-1.5">Số Lượng <span class="text-red-500">*</span></label>
-                <input type="number" id="input-quantity" oninput="calculateTotal()" value="1000" class="w-full bg-gray-50 border border-gray-200 text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:border-indigo-500 font-medium">
-            </div>
-
-            <div class="pt-2 border-t border-gray-50 flex items-center justify-between">
-                <div>
-                    <span class="text-gray-400 text-[10px] block">Tổng thanh toán</span>
-                    <span id="lbl-total" class="text-red-500 font-bold text-base">400.000đ</span>
-                </div>
-                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-3 px-6 rounded-xl shadow-md">Tạo Đơn</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="deposit-page" class="page-section flex-1 flex-col p-4 bg-[#f8fafc]">
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-            <h2 class="text-sm font-bold text-gray-800 mb-4 border-b pb-2"><i class="fa-solid fa-building-columns text-indigo-500"></i> Nạp Tiền Tự Động</h2>
-            
-            <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl mb-4">
-                <p class="text-[11px] text-amber-700 leading-relaxed"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Quét mã QR hoặc copy chính xác nội dung chuyển khoản. Tiền sẽ vào tài khoản tự động sau 1-3 phút.</p>
-            </div>
-
-            <div class="border border-blue-100 bg-blue-50/30 rounded-xl p-4 flex flex-col items-center text-center">
-                <img src="https://img.vietqr.io/image/mbbank-0397208110-compact2.png" alt="QR Code" class="w-40 h-40 object-cover rounded-lg mb-3 bg-white p-1 border">
-                <div class="w-full space-y-2 text-xs">
-                    <div class="flex justify-between border-b border-blue-100 pb-1">
-                        <span class="text-gray-500">Ngân hàng:</span>
-                        <span class="font-bold text-gray-800">MB BANK</span>
-                    </div>
-                    <div class="flex justify-between border-b border-blue-100 pb-1">
-                        <span class="text-gray-500">Chủ tài khoản:</span>
-                        <span class="font-bold text-gray-800">NGUYEN QUOC HUY</span>
-                    </div>
-                    <div class="flex justify-between border-b border-blue-100 pb-1">
-                        <span class="text-gray-500">Số tài khoản:</span>
-                        <span class="font-bold text-blue-600 flex items-center gap-1">0397208110 <i class="fa-regular fa-copy cursor-pointer text-gray-400"></i></span>
-                    </div>
-                    <div class="flex justify-between pt-1">
-                        <span class="text-gray-500">Nội dung:</span>
-                        <span class="font-bold text-rose-500 flex items-center gap-1">DICHVU1S NGUYENHUY <i class="fa-regular fa-copy cursor-pointer text-gray-400"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="orders-page" class="page-section flex-1 flex-col p-4 bg-[#f8fafc]">
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-            <h2 class="text-sm font-bold text-gray-800 mb-4 border-b pb-2"><i class="fa-solid fa-list-check text-indigo-500"></i> Lịch Sử Đơn Hàng</h2>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-gray-50 text-gray-500 text-[10px] uppercase tracking-wider">
-                            <th class="p-2 rounded-l-lg">ID</th>
-                            <th class="p-2">Dịch Vụ</th>
-                            <th class="p-2 text-center">SL</th>
-                            <th class="p-2 rounded-r-lg text-right">Trạng Thái</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-xs text-gray-700">
-                        <tr class="border-b border-gray-50">
-                            <td class="p-2 font-mono">#1024</td>
-                            <td class="p-2"><span class="font-medium">Tăng View TikTok</span><br><span class="text-[9px] text-gray-400">Sv1 - Nguồn View VN</span></td>
-                            <td class="p-2 text-center">5,000</td>
-                            <td class="p-2 text-right"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-[9px] font-bold">Hoàn Thành</span></td>
-                        </tr>
-                        <tr class="border-b border-gray-50">
-                            <td class="p-2 font-mono">#1025</td>
-                            <td class="p-2"><span class="font-medium">Tăng Like Facebook</span><br><span class="text-[9px] text-gray-400">Sv2 - Like Tây</span></td>
-                            <td class="p-2 text-center">1,000</td>
-                            <td class="p-2 text-right"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[9px] font-bold">Đang Chạy</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-2 font-mono">#1026</td>
-                            <td class="p-2"><span class="font-medium">Tăng Follow IG</span><br><span class="text-[9px] text-gray-400">Sv1 - Follow Tây</span></td>
-                            <td class="p-2 text-center">500</td>
-                            <td class="p-2 text-right"><span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-[9px] font-bold">Chờ Xử Lý</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <nav class="fixed bottom-0 max-w-md w-full bg-white border-t border-gray-100 flex justify-around items-center py-2 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <button id="nav-deposit" onclick="switchPage('deposit')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 transition-colors">
-            <i class="fa-solid fa-wallet text-base"></i><span class="text-[10px] font-medium">Nạp Tiền</span>
-        </button>
-        <button id="nav-orders" onclick="switchPage('orders')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 transition-colors">
-            <i class="fa-solid fa-clipboard-list text-base"></i><span class="text-[10px] font-medium">Đơn Hàng</span>
-        </button>
+    <!-- MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
+    <div id="auth-screen">
+        <div class="sys-msg">> Vui lòng đăng nhập để nhận Job...</div>
         
-        <button id="nav-dashboard" onclick="switchPage('dashboard')" class="flex flex-col items-center justify-center -mt-6 bg-gray-400 text-white w-12 h-12 rounded-full shadow-lg border-4 border-white transition-all">
-            <i class="fa-solid fa-cart-plus text-base"></i>
-        </button>
+        <div class="form-group">
+            <label for="username">Tài khoản :</label>
+            <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu  :</label>
+            <input type="password" id="password" placeholder="Nhập mật khẩu">
+            <!-- Con mắt xem mật khẩu -->
+            <span class="eye-icon" onclick="togglePassword()" title="Hiện/Ẩn mật khẩu">[👁️]</span>
+        </div>
+        <div class="form-group">
+            <a onclick="alert('> HỆ THỐNG: Đã gửi yêu cầu cấp lại mật khẩu. Vui lòng kiểm tra email!')">[Quên mật khẩu?]</a>
+        </div>
+
+        <div class="actions">
+            <button onclick="login()">[ ĐĂNG NHẬP ]</button>
+            <button onclick="register()">[ ĐĂNG KÝ ]</button>
+        </div>
+        <div id="auth-error" style="color: #FF0000; margin-top: 10px; display: none;"></div>
+    </div>
+
+    <!-- MÀN HÌNH DANH SÁCH JOB (Bị ẩn cho đến khi đăng nhập) -->
+    <div id="dashboard">
+        <div class="sys-msg">> ĐĂNG NHẬP THÀNH CÔNG! Đang tải dữ liệu server...</div>
+        <div>Tài khoản: <span id="user-display" style="color: #FFFFFF;"></span></div>
+        <br>
         
-        <button id="nav-landing" onclick="switchPage('landing')" class="nav-btn flex flex-col items-center gap-1 text-indigo-600 transition-colors">
-            <i class="fa-solid fa-house text-base"></i><span class="text-[10px] font-medium">Trang Chủ</span>
-        </button>
-        <button class="nav-btn flex flex-col items-center gap-1 text-gray-400 transition-colors">
-            <i class="fa-solid fa-user text-base"></i><span class="text-[10px] font-medium">Tài Khoản</span>
-        </button>
-    </nav>
+        <button onclick="logout()">[ ĐĂNG XUẤT ]</button>
 
-    <script>
-        // HỆ THỐNG ĐIỀU HƯỚNG TRANG (SPA)
-        function switchPage(pageId) {
-            // 1. Ẩn tất cả các trang
-            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-            // 2. Hiện trang được chọn
-            document.getElementById(pageId + '-page').classList.add('active');
-            
-            // 3. Reset màu tất cả nút Nav
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-indigo-600');
-                btn.classList.add('text-gray-400');
-            });
-            document.getElementById('nav-dashboard').classList.replace('bg-indigo-600', 'bg-gray-400');
+        <div class="job-section">
+            <h3>[+] JOB TIKTOK (45đ - 80đ)</h3>
+            <ul id="tiktok-list">
+                <!-- Data sẽ được Javascript random và chèn vào đây -->
+            </ul>
+        </div>
 
-            // 4. Highlight nút tương ứng
-            if(pageId === 'dashboard') {
-                document.getElementById('nav-dashboard').classList.replace('bg-gray-400', 'bg-indigo-600');
-            } else if (document.getElementById('nav-' + pageId)) {
-                document.getElementById('nav-' + pageId).classList.remove('text-gray-400');
-                document.getElementById('nav-' + pageId).classList.add('text-indigo-600');
-            }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Khởi tạo data nếu vào Dashboard
-            if(pageId === 'dashboard') updateCategories();
+        <div class="job-section">
+            <h3>[+] JOB FACEBOOK (30đ - 60đ)</h3>
+            <ul id="facebook-list">
+                <!-- Data sẽ được Javascript random và chèn vào đây -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. CHỨC NĂNG CON MẮT XEM MẬT KHẨU
+    function togglePassword() {
+        let pwd = document.getElementById("password");
+        if (pwd.type === "password") {
+            pwd.type = "text";
+        } else {
+            pwd.type = "password";
+        }
+    }
+
+    // 2. HÀM RANDOM GIÁ TIỀN GIỐNG CODE C++ RAND()
+    function getRandomPrice(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // 3. RENDER DANH SÁCH JOB
+    function loadJobs() {
+        // Render TikTok Jobs
+        const tiktokServers = ["VN Max", "VN Super", "VN Infinity"];
+        let tiktokHTML = "";
+        tiktokServers.forEach(server => {
+            let price = getRandomPrice(45, 80);
+            tiktokHTML += `<li>Server ${server}: <span style="color:#FFFF00">${price}đ</span> / 1 follow [ <a onclick="alert('Đã nhận job tại ${server} giá ${price}đ!')">Nhận Job</a> ]</li>`;
+        });
+        document.getElementById("tiktok-list").innerHTML = tiktokHTML;
+
+        // Render Facebook Jobs
+        const fbServers = ["VN Max", "VN Super", "VN Infinity"];
+        let fbHTML = "";
+        fbServers.forEach(server => {
+            let price = getRandomPrice(30, 60);
+            fbHTML += `<li>Server ${server}: <span style="color:#FFFF00">${price}đ</span> / 1 follow [ <a onclick="alert('Đã nhận job tại ${server} giá ${price}đ!')">Nhận Job</a> ]</li>`;
+        });
+        document.getElementById("facebook-list").innerHTML = fbHTML;
+    }
+
+    // 4. CHỨC NĂNG ĐĂNG KÝ (Giả lập)
+    function register() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+        if(user === "" || pass === "") {
+            showError("> LỖI: Không được để trống tài khoản và mật khẩu!");
+            return;
+        }
+        alert("> HỆ THỐNG: Đăng ký thành công tài khoản [" + user + "]!");
+    }
+
+    // 5. CHỨC NĂNG ĐĂNG NHẬP (Giả lập)
+    function login() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+        
+        if(user === "" || pass === "") {
+            showError("> LỖI: Vui lòng nhập tài khoản và mật khẩu!");
+            return;
         }
 
-        // KHO DỮ LIỆU SMM NHƯ BẢN TRƯỚC
-        const database = {
-            tt: { name: "TikTok", icon: '<i class="fa-brands fa-tiktok"></i>', color: 'text-zinc-900', categories: {
-                "Tăng View Video": [ { name: "Sv1 - Nguồn view tiktok nhanh của 🇻🇳", price: 400, min: 100, max: 10000000, warranty: "Không" }, { name: "Sv2 - Nguồn view phone cày ổn định", price: 800, min: 500, max: 5000000, warranty: "Có" } ],
-                "Tăng Tim (Like)": [ { name: "Sv1 - Tim tương tác tài khoản Việt", price: 1000, min: 50, max: 200000, warranty: "Có" }, { name: "Sv2 - Tim tương tác tài khoản Tây (Ngoại)", price: 500, min: 100, max: 500000, warranty: "Không" } ],
-                "Tăng Follow Kênh": [ { name: "Sv1 - Follow thật Việt Nam", price: 30000, min: 100, max: 50000, warranty: "Có" }, { name: "Sv2 - Follow Quốc Tế (Tây)", price: 40000, min: 100, max: 100000, warranty: "Có" } ]
-            }},
-            fb: { name: "Facebook", icon: '<i class="fa-brands fa-facebook"></i>', color: 'text-blue-600', categories: {
-                "Tăng Like Bài Viết": [ { name: "Sv1 - Like bài viết tài khoản Việt", price: 150, min: 100, max: 50000, warranty: "Không" } ]
-            }},
-            ig: { name: "Instagram", icon: '<i class="fa-brands fa-instagram"></i>', color: 'text-pink-600', categories: {
-                "Tăng Like Instagram": [ { name: "Sv1 - Like quốc tế lên nhanh", price: 120, min: 50, max: 100000, warranty: "Không" } ]
-            }},
-            yt: { name: "YouTube", icon: '<i class="fa-brands fa-youtube"></i>', color: 'text-red-600', categories: {
-                "Tăng View Video": [ { name: "Sv1 - View đề xuất Việt Nam", price: 900, min: 500, max: 1000000, warranty: "Có" } ]
-            }}
-        };
+        // Ẩn màn hình đăng nhập, hiện màn hình Job
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("user-display").innerText = user;
 
-        function updateCategories() {
-            const platform = document.getElementById('platform-select').value;
-            const categorySelect = document.getElementById('category-select');
-            const iconContainer = document.getElementById('platform-icon');
-            iconContainer.innerHTML = database[platform].icon;
-            iconContainer.className = `absolute left-3.5 top-3 text-sm ${database[platform].color}`;
-            categorySelect.innerHTML = '';
-            Object.keys(database[platform].categories).forEach(cat => {
-                categorySelect.appendChild(new Option(cat, cat));
-            });
-            updateServices();
-        }
+        // Load giá tiền random
+        loadJobs();
+    }
 
-        function updateServices() {
-            const platform = document.getElementById('platform-select').value;
-            const category = document.getElementById('category-select').value;
-            const serviceSelect = document.getElementById('service-select');
-            serviceSelect.innerHTML = '';
-            database[platform].categories[category].forEach((srv, index) => {
-                serviceSelect.appendChild(new Option(`${srv.name} [${srv.price}đ]`, index));
-            });
-            updateServiceDetails();
-        }
+    // 6. CHỨC NĂNG ĐĂNG XUẤT
+    function logout() {
+        document.getElementById("auth-screen").style.display = "block";
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("password").value = "";
+        document.getElementById("auth-error").style.display = "none";
+    }
 
-        let currentPrice = 0;
-        function updateServiceDetails() {
-            const platform = document.getElementById('platform-select').value;
-            const category = document.getElementById('category-select').value;
-            const serviceIndex = document.getElementById('service-select').value;
-            const service = database[platform].categories[category][serviceIndex];
-            if (service) {
-                currentPrice = service.price;
-                document.getElementById('lbl-price').textContent = service.price + "đ";
-                document.getElementById('lbl-minmax').textContent = `${service.min.toLocaleString()} / ${service.max.toLocaleString()}`;
-                document.getElementById('lbl-warranty').textContent = service.warranty;
-                calculateTotal();
-            }
-        }
+    // Hiển thị thông báo lỗi
+    function showError(msg) {
+        let errDiv = document.getElementById("auth-error");
+        errDiv.innerText = msg;
+        errDiv.style.display = "block";
+    }
+</script>
 
-        function calculateTotal() {
-            const quantity = parseInt(document.getElementById('input-quantity').value) || 0;
-            document.getElementById('lbl-total').textContent = (quantity * currentPrice).toLocaleString() + "đ";
-        }
-
-        window.onload = () => { switchPage('landing'); };
-    </script>
 </body>
 </html>
  
